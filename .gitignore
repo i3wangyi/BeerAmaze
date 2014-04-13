@@ -1,15 +1,15 @@
 # =============== #
 # Unity generated #
 # =============== #
-$PROJDIR/Temp/
-$PROJDIR/Obj/
-$PROJDIR/UnityGenerated/
-$PROJDIR/Library/
+Temp/*
+Obj/*
+UnityGenerated/*
+Library/*
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
-$PROJDIR/ExportedObj/
+ExportedObj/*
 *.svd
 *.userprefs
 *.csproj
