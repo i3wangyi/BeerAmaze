@@ -25,4 +25,5 @@ A simple task: Start from the entrance of the maze, fog will dimiss when soldier
 
 ####Yi Wang: 
   
-  Translate and rotate(GUI button and collision handle)
+  Translate and rotate(Rotate around Y axis)
+  (GUI button and collision handle)
