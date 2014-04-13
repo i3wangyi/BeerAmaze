@@ -1,6 +1,0 @@
-﻿C:\Users\Elizabeth\Documents\3dsMax\scenes\t$m$p$$$\demo-maze.max
-C:\Users\Elizabeth\Documents\3dsMax\scenes\t$m$p$$$\MAXFILES.TXT
-C:\Program Files\Autodesk\3ds Max 2014\Maps\glare\glare_streaks_star_camera_filter.tif
-C:\Users\Elizabeth\Documents\3dsMax\sceneassets\images\Concrete.Precast Structural Concrete.Smooth.jpg
-F:\Unity\Projects\Assets\Stone textures pack\Stone 01\preview.jpg
-C:\Users\Elizabeth\Documents\3dsMax\downloads\Stone textures pack\Stone 05\diffuse.tga

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<QCARInfo>
-    <TargetSet version="2.6" toolVersion="2.7.3">
-        <ImageTarget name="Need_for_Speed" targetId="e02d209ff6f54993847a3810132b44c5" version="2.6" toolVersion="2.7.3">
-            <UnpaddedImage size="320 200" />
-        </ImageTarget>
-    </TargetSet>
-</QCARInfo>
