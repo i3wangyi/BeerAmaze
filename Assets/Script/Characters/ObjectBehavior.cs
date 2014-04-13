@@ -35,6 +35,7 @@ public class ObjectBehavior : MonoBehaviour {
 
 			Vector3 CameraPosDiff = CameraNewPos - CameraPrevPos;
 			Vector3 CameraOriDiff = CameraNewOri - CameraPrevOri;
+			float rotateSpeed = 1.0f;
 
 			//May scale proportionally to camera's movement
 			if(EnableTranslate)
@@ -45,7 +46,7 @@ public class ObjectBehavior : MonoBehaviour {
 			if(EnableRotate)
 			{
 				//Add: HeadLight behavior
-				transform.eulerAngles -= new Vector3(CameraOriDiff.x,0,CameraOriDiff.z);
+				transform.Rotate(Vector3.up * Time.deltaTime*rotateSpeed);
 			}
 
 			CameraPrevPos = CameraNewPos;

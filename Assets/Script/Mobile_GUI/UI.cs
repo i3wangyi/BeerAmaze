@@ -32,7 +32,7 @@ public class UI : MonoBehaviour {
 				GUILayout.BeginVertical("box");
 
 					//Translate
-					if(GUILayout.Button("Move"))
+					if(GUILayout.RepeatButton("Move"))
 					{
 						MainObject.GetComponent<ObjectBehavior>().setMove();
 						MainObject.GetComponent<ObjectBehavior>().setCameraStatus();
@@ -42,7 +42,7 @@ public class UI : MonoBehaviour {
 					}
 
 					//Rotate
-					if(GUILayout.Button("Look around"))
+					if(GUILayout.RepeatButton("Look around"))
 					{
 						MainObject.GetComponent<ObjectBehavior>().setRotate();
 						MainObject.GetComponent<ObjectBehavior>().setCameraStatus();
