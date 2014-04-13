@@ -21,6 +21,7 @@ A simple task: Start from the entrance of the maze, fog will dimiss when soldier
 ####Shuai Lu and Wenping Chi: 
   
   Fog(dismiss and headlight)
+  https://www.youtube.com/watch?v=yzcfTb9e0lo
 
 ####Yi Wang: 
   
