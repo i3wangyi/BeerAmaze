@@ -3,10 +3,11 @@ using System.Collections;
 
 public class ObjectBehavior : MonoBehaviour {
 
-	public bool isPlayMode = true;
+	public static bool isPlayMode = true;
 	public bool EnableTranslate = false;
 	public bool EnableRotate = false;
 
+	// Object moves as camera moves
 	public GameObject MainCamera;
 	public Vector3 CameraPrevPos;
 	public Vector3 CameraPrevOri;
@@ -27,7 +28,6 @@ public class ObjectBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-
 		if (isPlayMode) {
 
 			CameraNewPos = MainCamera.transform.position;
@@ -36,7 +36,7 @@ public class ObjectBehavior : MonoBehaviour {
 			Vector3 CameraPosDiff = CameraNewPos - CameraPrevPos;
 			Vector3 CameraOriDiff = CameraNewOri - CameraPrevOri;
 
-
+			//May scale proportionally to camera's movement
 			if(EnableTranslate)
 			{
 				//Control move in the plane
