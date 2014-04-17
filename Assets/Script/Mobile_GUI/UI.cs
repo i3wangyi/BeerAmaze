@@ -28,7 +28,7 @@ public class UI : MonoBehaviour {
 
 		if(isPlayMode)
 		{
-			GUILayout.BeginArea(new Rect(0,0,400,1000) );
+			GUILayout.BeginArea(new Rect(0,0,600,1000) );
 
 				GUILayout.BeginVertical("box");
 
@@ -54,7 +54,7 @@ public class UI : MonoBehaviour {
 
 					//For debug camera's position
 					GUILayout.TextField(this.transform.position.ToString());
-					GUILayout.TextField(this.transform.eulerAngles.ToString());
+					GUILayout.TextField("("+(int)this.transform.eulerAngles.x+","+(int)this.transform.eulerAngles.y+","+(int)this.transform.eulerAngles.z + ")");
 					
 					if(MazeCollision)
 					{
