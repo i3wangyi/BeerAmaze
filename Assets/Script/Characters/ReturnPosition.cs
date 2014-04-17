@@ -42,6 +42,7 @@ public class ReturnPosition : MonoBehaviour
 	{
 		this.gameObject.transform.position = previousPos;
 		this.gameObject.transform.eulerAngles = previousOri;
+		counter = 0;
 	}
 	void OnTriggerExit()
 	{
