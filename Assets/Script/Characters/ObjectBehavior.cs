@@ -18,6 +18,8 @@ public class ObjectBehavior : MonoBehaviour {
 	private Vector3 CameraPosDiff;
 	private Vector3 CameraOriDiff;
 
+	private int counter = 0;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -30,6 +32,7 @@ public class ObjectBehavior : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
+
 	void Update () 
 	{
 		CameraNewPos = camera.transform.position;
@@ -39,12 +42,12 @@ public class ObjectBehavior : MonoBehaviour {
 		CameraOriDiff = CameraNewOri - CameraPrevOri;
 
 
-
 		if (isPlayMode) {
 
 			//May scale proportionally to camera's movement
 			if(EnableTranslate)
 			{
+
 				Debug.Log (CameraPosDiff.x.ToString() + " " +CameraPosDiff.z.ToString());
 				//Control move in the plane
 				this.transform.position += new Vector3(CameraPosDiff.x,0,CameraPosDiff.z);
@@ -94,5 +97,4 @@ public class ObjectBehavior : MonoBehaviour {
 		EnableRotate = false;
 	}
 	
-	                 
 }
