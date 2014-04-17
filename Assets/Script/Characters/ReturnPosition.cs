@@ -24,7 +24,7 @@ public class ReturnPosition : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if (counter == 0) 
+		if (counter <= 20) 
 		{
 			counter++;	
 		} 
