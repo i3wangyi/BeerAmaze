@@ -27,3 +27,42 @@ A simple task: Start from the entrance of the maze, fog will dimiss when soldier
   
   Translate and rotate(Rotate around Y axis)
   (GUI button and collision handle)
+
+
+##Stage 2 (before 4.22)
+
+###Requirements:
+	GUI control
+	
+	Selection
+		1. GUI selection
+		2. 
+	Translation
+		1. Moves as Camera moves
+		2. 	
+	Rotation
+		1. Clockwise as Camera up; otherwise	
+	Wayfinding
+		1.
+	Travel
+		
+	Toolbox:
+		2. All Light
+		3. Mushroom(Scale Up)(Time)
+		4. Blood 
+		6. *Wayfinding*
+
+###To-do:
+	Collision(bounce back)
+	*First-Person View*
+	GUI Control Logic
+					
+####Elizabeth
+	
+
+####Shuai Lu
+	GUI Control Logic
+	
+####Wenping Chi and Yi Wang
+	Wayfinding
+	First-Person View
