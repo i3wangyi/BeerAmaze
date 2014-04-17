@@ -10,7 +10,7 @@ public class FogOfWar : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		this.GetComponent<Renderer> ().material.SetVector ("_Player_Pos", GameObject.Find ("soldier").transform.position);
-		this.GetComponent<Renderer> ().material.SetVector ("_Player_Ori", GameObject.Find ("soldier").transform.forward);
+		this.GetComponent<Renderer> ().material.SetVector ("_Player_Pos", GameObject.Find ("MAX").transform.position);
+		this.GetComponent<Renderer> ().material.SetVector ("_Player_Ori", GameObject.Find ("MAX").transform.forward);
 	}
 }
