@@ -5,6 +5,7 @@ public class UI : MonoBehaviour {
 	//Indicate which play mode at present
 	public static bool isPlayMode = true;
 	public GameObject MainObject;
+	public bool MazeCollision = false;
 	// Use this for initialization
 	void Start () {
 	
@@ -54,12 +55,23 @@ public class UI : MonoBehaviour {
 					//For debug camera's position
 					GUILayout.TextField(this.transform.position.ToString());
 					GUILayout.TextField(this.transform.eulerAngles.ToString());
-
+					
+					if(MazeCollision)
+					{
+						GUILayout.TextField("Collision Detection");
+					}
+					
 				GUILayout.EndVertical();
 
 			GUILayout.EndArea();
 		}
 	}
+
+	public void setMazeCollision(bool c)
+	{
+		MazeCollision = c;
+	}
+	                            
 
 	Rect ResizeGUI(Rect _rect)
 	{
