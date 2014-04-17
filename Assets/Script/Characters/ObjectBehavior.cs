@@ -35,8 +35,6 @@ public class ObjectBehavior : MonoBehaviour {
 
 			Vector3 CameraPosDiff = CameraNewPos - CameraPrevPos;
 			Vector3 CameraOriDiff = CameraNewOri - CameraPrevOri;
-
-			float rotateSpeed = 5.0f * CameraOriDiff.y>0?1:-1;
 			//May scale proportionally to camera's movement
 			if(EnableTranslate)
 			{
@@ -45,10 +43,14 @@ public class ObjectBehavior : MonoBehaviour {
 			}
 			if(EnableRotate)
 			{
+				float rotateSpeed = 5.0f * CameraOriDiff.y>0?1:-1;
 				//Add: HeadLight behavior
 				//Camera EulerAngle's Y increases, clokwise; otherwise, anticlockwise
-//				transform.eulerAngles -= new Vector3(0,2*CameraOriDiff.y,0);
-				transform.Rotate(Vector3.up * Time.deltaTime * rotateSpeed);
+
+//				transform.eulerAngles = new Vector3(transform.eulerAngles.x, CameraNewOri.y, transform.eulerAngles.z);
+				transform.eulerAngles -= new Vector3(0,CameraPosDiff.y,0);
+
+//				transform.Rotate(Vector3.up * Time.deltaTime * rotateSpeed);
 			}
 
 			CameraPrevPos = CameraNewPos;
