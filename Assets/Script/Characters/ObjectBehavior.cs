@@ -20,26 +20,46 @@ public class ObjectBehavior : MonoBehaviour {
 	public Vector3 newPos;
 	public Vector3 newOri;
 
+	private int counter = 0;
+
 	// Use this for initialization
 	void Start () {
 		MainCamera = GameObject.Find ("MainCamera");
+
+		CameraNewPos = MainCamera.transform.position;
+		CameraNewOri = MainCamera.transform.eulerAngles;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
 		if (isPlayMode) {
 
-			CameraNewPos = MainCamera.transform.position;
-			CameraNewOri = MainCamera.transform.eulerAngles;
+
+
+			if(counter < 1)
+			{
+				counter++;
+			}
+			else
+			{
+				CameraPrevPos = CameraNewPos;
+				CameraPrevOri = CameraNewOri;
+				counter = 0;
+			}
 
 			Vector3 CameraPosDiff = CameraNewPos - CameraPrevPos;
 			Vector3 CameraOriDiff = CameraNewOri - CameraPrevOri;
 			//May scale proportionally to camera's movement
 			if(EnableTranslate)
 			{
+				Debug.Log(CameraNewPos.ToString());
+				Debug.Log(CameraPrevPos.ToString());
+				Debug.Log(CameraPosDiff.x.ToString());
 				//Control move in the plane
-				transform.position += new Vector3(CameraPosDiff.x,0,CameraPosDiff.z);
+				Debug.Log(new Vector3(CameraPosDiff.x,0,CameraPosDiff.z).ToString());
+				this.gameObject.transform.position += new Vector3(CameraPosDiff.x,0,CameraPosDiff.z);
+				Debug.Log(transform.position.ToString());
+				GameObject.Find("MAX").animation.Play("walk", PlayMode.StopAll);
 			}
 			if(EnableRotate)
 			{
@@ -54,8 +74,8 @@ public class ObjectBehavior : MonoBehaviour {
 //				transform.Rotate(Vector3.up * Time.deltaTime * rotateSpeed);
 			}
 
-			CameraPrevPos = CameraNewPos;
-			CameraPrevOri = CameraNewOri;
+			CameraNewPos = MainCamera.transform.position;
+			CameraNewOri = MainCamera.transform.eulerAngles;
 
 		}
 	}
