@@ -50,6 +50,7 @@ public class ObjectBehavior : MonoBehaviour {
 //				transform.eulerAngles = new Vector3(transform.eulerAngles.x, CameraNewOri.y, transform.eulerAngles.z);
 				transform.eulerAngles -= new Vector3(0,CameraPosDiff.y,0);
 
+
 //				transform.Rotate(Vector3.up * Time.deltaTime * rotateSpeed);
 			}
 
