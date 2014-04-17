@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class ObjectBehavior : MonoBehaviour {
@@ -8,77 +8,68 @@ public class ObjectBehavior : MonoBehaviour {
 	public bool EnableRotate = false;
 
 	// Object moves as camera moves
-	public GameObject MainCamera;
+	private GameObject camera;
 	public Vector3 CameraPrevPos;
 	public Vector3 CameraPrevOri;
 	public Vector3 CameraNewPos;
 	public Vector3 CameraNewOri;
-	//Object position and orientation
-	public Vector3 prevPos;
-	public Vector3 PrevOri;
 
-	public Vector3 newPos;
-	public Vector3 newOri;
+
+	private Vector3 CameraPosDiff;
+	private Vector3 CameraOriDiff;
 
 	private int counter = 0;
 
 	// Use this for initialization
-	void Start () {
-		MainCamera = GameObject.Find ("MainCamera");
+	void Start () 
+	{
+		camera = GameObject.Find ("MainCamera");
+
+		CameraNewPos = camera.transform.position;
+		CameraNewOri = camera.transform.eulerAngles;
+		CameraPrevPos = CameraNewPos;
+		CameraPrevOri = CameraNewOri;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+
+	void Update () 
+	{
+		CameraNewPos = camera.transform.position;
+		CameraNewOri = camera.transform.eulerAngles;
+
+		CameraPosDiff = CameraNewPos - CameraPrevPos;
+		CameraOriDiff = CameraNewOri - CameraPrevOri;
+
+
 		if (isPlayMode) {
 
-//			if(counter < 1)
-//			{
-//				counter++;
-//			}
-//			else
-//			{
-//				CameraPrevPos = CameraNewPos;
-//				CameraPrevOri = CameraNewOri;
-//				counter = 0;
-//			}
-
-			CameraNewPos = transform.position;
-			CameraNewOri = transform.eulerAngles;
-
-			Vector3 CameraPosDiff = CameraNewPos - CameraPrevPos;
-			Vector3 CameraOriDiff = CameraNewOri - CameraPrevOri;
 			//May scale proportionally to camera's movement
 			if(EnableTranslate)
 			{
-				Debug.Log(CameraNewPos.ToString());
-				Debug.Log(CameraPrevPos.ToString());
-				Debug.Log(CameraPosDiff.x.ToString());
+
+				Debug.Log (CameraPosDiff.x.ToString() + " " +CameraPosDiff.z.ToString());
 				//Control move in the plane
-				Debug.Log(new Vector3(CameraPosDiff.x,0,CameraPosDiff.z).ToString());
-
-				this.gameObject.transform.position += new Vector3(CameraPosDiff.x,0,CameraPosDiff.z);
-
-				Debug.Log(transform.position.ToString());
-
-				GameObject.Find("MAX").animation.Play("walk", PlayMode.StopAll);
+				this.transform.position += new Vector3(CameraPosDiff.x,0,CameraPosDiff.z);
+				this.gameObject.animation.Play("walk", PlayMode.StopAll);
 			}
 			if(EnableRotate)
 			{
-				float rotateSpeed = 5.0f * CameraOriDiff.y>0?1:-1;
 				//Add: HeadLight behavior
 				//Camera EulerAngle's Y increases, clokwise; otherwise, anticlockwise
+				
+				//				transform.eulerAngles = new Vector3(transform.eulerAngles.x, CameraNewOri.y, transform.eulerAngles.z);
+				this.transform.eulerAngles -= new Vector3(0,CameraPosDiff.y,0);
+				
+				
+				//				transform.Rotate(Vector3.up * Time.deltaTime * rotateSpeed);
 
-//				transform.eulerAngles = new Vector3(transform.eulerAngles.x, CameraNewOri.y, transform.eulerAngles.z);
-				transform.eulerAngles -= new Vector3(0,CameraPosDiff.y,0);
-
-
-//				transform.Rotate(Vector3.up * Time.deltaTime * rotateSpeed);
 			}
-
-			CameraNewPos = MainCamera.transform.position;
-			CameraNewOri = MainCamera.transform.eulerAngles;
-
 		}
+
+		CameraPrevPos = CameraNewPos;
+		CameraPrevOri = CameraNewOri;
+
 	}
 
 	public void setPlayMode()
@@ -105,12 +96,5 @@ public class ObjectBehavior : MonoBehaviour {
 	{
 		EnableRotate = false;
 	}
-
-	//Called when user hold the UI's translate or rotate button, used to record the camera's position at that time
-	public void setCameraStatus()
-	{
-		CameraPrevPos = MainCamera.transform.position;
-		CameraPrevOri = MainCamera.transform.eulerAngles;
-	}
-	                 
+	
 }

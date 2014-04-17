@@ -36,7 +36,7 @@ public class UI : MonoBehaviour {
 					if(GUILayout.RepeatButton("Move"))
 					{
 						MainObject.GetComponent<ObjectBehavior>().setMove();
-						MainObject.GetComponent<ObjectBehavior>().setCameraStatus();
+						//MainObject.GetComponent<ObjectBehavior>().setCameraStatus();
 					}
 					else{
 						MainObject.GetComponent<ObjectBehavior>().resetMove();
@@ -46,7 +46,7 @@ public class UI : MonoBehaviour {
 					if(GUILayout.RepeatButton("Look around"))
 					{
 						MainObject.GetComponent<ObjectBehavior>().setRotate();
-						MainObject.GetComponent<ObjectBehavior>().setCameraStatus();
+						//MainObject.GetComponent<ObjectBehavior>().setCameraStatus();
 					}
 					else{
 						MainObject.GetComponent<ObjectBehavior>().resetRotate();
