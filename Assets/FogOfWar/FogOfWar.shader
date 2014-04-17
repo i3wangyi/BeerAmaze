@@ -2,7 +2,7 @@
 	Properties {
 		_Color("Main Color", Color) = (1,1,1,1)
 		_MainTex ("Base (RGB) Trans(A)", 2D) = "white" {}
-		_FogRadius ("FogRadius", float) = 100
+		_FogRadius ("FogRadius", float) = 50
 		_FogMaxRadius("FogMaxRadius", float) = 1
 		_Player_Pos ("_Player_Pos", Vector) = (0,0,0,1)
 		_Player_Ori ("_Player_Ori", Vector) = (0,0,1,1)
@@ -49,7 +49,7 @@
 	{
 		float2 vec1 = _Player_Ori.xz;
 		float2 vec2 = nearVertex.xy - pos.xz;
-		float angle = (vec1 * vec2) / (length(vec1) * length(vec2));
+		float angle = (vec1.x * vec2.x + vec1.y * vec2.y) / (length(vec1) * length(vec2));
 		float atten = (_LightRadius - length(pos.xz - nearVertex.xy));
 		
 		if(angle > 0.95)
@@ -58,7 +58,8 @@
 		}
 		else
 		{
-			return 0.0;
+			atten = (_FogRadius - length(pos.xz - nearVertex.xy));
+			return (1.0/_FogMaxRadius)*atten / _FogRadius;
 		}
 	}
 	float powerForPos(float4 pos, float2 nearVertex)
