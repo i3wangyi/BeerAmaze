@@ -16,9 +16,7 @@ public class ObjectBehavior : MonoBehaviour {
 
 
 	private Vector3 CameraPosDiff;
-	private Vector3 CameraOriDiff;
-
-	private int counter = 0;
+	private float  CameraAngleDiff;
 
 	// Use this for initialization
 	void Start () 
@@ -39,8 +37,15 @@ public class ObjectBehavior : MonoBehaviour {
 		CameraNewOri = camera.transform.eulerAngles;
 
 		CameraPosDiff = CameraNewPos - CameraPrevPos;
-		CameraOriDiff = CameraNewOri - CameraPrevOri;
-
+//		float dx = CameraNewOri.x - CameraPrevOri.x;
+//		float dz = CameraNewOri.z - CameraPrevOri.z;
+		float dy = CameraNewOri.y;
+		CameraAngleDiff = dy * Mathf.Rad2Deg;
+		float playerAngle = this.transform.eulerAngles.y * Mathf.Rad2Deg;
+		// subtract player angle, to get relative angle to object
+		// subtract 90
+		// (so 0 degrees (same direction as player) is UP)
+		float angleToCamera = playerAngle - CameraAngleDiff;
 
 		if (isPlayMode) {
 
@@ -55,15 +60,9 @@ public class ObjectBehavior : MonoBehaviour {
 			}
 			if(EnableRotate)
 			{
-				//Add: HeadLight behavior
-				//Camera EulerAngle's Y increases, clokwise; otherwise, anticlockwise
-				
-				//				transform.eulerAngles = new Vector3(transform.eulerAngles.x, CameraNewOri.y, transform.eulerAngles.z);
+				//transform.eulerAngles = new Vector3(transform.eulerAngles.x, CameraNewOri.y, transform.eulerAngles.z);
 				this.transform.eulerAngles -= new Vector3(0,CameraPosDiff.y,0);
 				
-				
-				//				transform.Rotate(Vector3.up * Time.deltaTime * rotateSpeed);
-
 			}
 		}
 

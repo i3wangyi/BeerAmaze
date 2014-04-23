@@ -4,7 +4,7 @@ using System.Collections;
 public class UI : MonoBehaviour {
 	//Indicate which play mode at present
 	public static bool isPlayMode = true;
-	public GameObject MainObject;
+	public GameObject player;
 	public bool MazeCollision = false;
 	// Use this for initialization
 	void Start () {
@@ -35,21 +35,21 @@ public class UI : MonoBehaviour {
 					//Translate
 					if(GUILayout.RepeatButton("Move"))
 					{
-						MainObject.GetComponent<ObjectBehavior>().setMove();
+						player.GetComponent<ObjectBehavior>().setMove();
 						//MainObject.GetComponent<ObjectBehavior>().setCameraStatus();
 					}
 					else{
-						MainObject.GetComponent<ObjectBehavior>().resetMove();
+						player.GetComponent<ObjectBehavior>().resetMove();
 					}
 
 					//Rotate
 					if(GUILayout.RepeatButton("Look around"))
 					{
-						MainObject.GetComponent<ObjectBehavior>().setRotate();
+						player.GetComponent<ObjectBehavior>().setRotate();
 						//MainObject.GetComponent<ObjectBehavior>().setCameraStatus();
 					}
 					else{
-						MainObject.GetComponent<ObjectBehavior>().resetRotate();
+						player.GetComponent<ObjectBehavior>().resetRotate();
 					}
 
 					//For debug camera's position
@@ -88,7 +88,7 @@ public class UI : MonoBehaviour {
 	//When given object is selected, its character will be passed to the UI
 	public void setCharacter(GameObject Character)
 	{
-		MainObject = Character;
+		player = Character;
 	}
 	public void setPlayMode()
 	{

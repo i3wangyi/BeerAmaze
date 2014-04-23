@@ -7,31 +7,35 @@ public class Radar : MonoBehaviour
 	const float MAX_DISTANCE = 100f;
 	const int RADAR_SIZE = 128;
 	
-	public Transform playerController;
+	public GameObject playerController;
+	public GameObject Treasure;
 	public Texture radarBackground;
 	public Texture targetBlip;
 	
-	private void OnGUI()
+	void OnGUI()
 	{
 		// background displaying top left in square of 128 pixels
 		Rect radarBackgroundRect = new Rect(0,0, RADAR_SIZE, RADAR_SIZE);
 		GUI.DrawTexture(radarBackgroundRect,radarBackground);
-		
 		// find all 'cube' tagged objects
-		GameObject[] cubeGOArray = GameObject.FindGameObjectsWithTag("object");
+//		GameObject[] cubeGOArray = GameObject.FindGameObjectsWithTag("object");
 		
 		// draw blips for all within distance
 		Vector3 playerPos = playerController.transform.position;
-		foreach (GameObject cubeGO in cubeGOArray)  
-		{
-			Vector3 targetPos = cubeGO.transform.position;
-			float distanceToTarget = Vector3.Distance(targetPos,playerPos);
-			if( (distanceToTarget <= MAX_DISTANCE) )
-				DrawBlip(playerPos, targetPos, distanceToTarget);
-		}
+//		foreach (GameObject cubeGO in cubeGOArray)  
+//		{
+//			Vector3 targetPos = cubeGO.transform.position;
+//			float distanceToTarget = Vector3.Distance(targetPos,playerPos);
+//			if( (distanceToTarget <= MAX_DISTANCE) )
+//				DrawBlip(playerPos, targetPos, distanceToTarget);
+//		}
+		Vector3 targetPos = Treasure.transform.position;
+		float distanceToTarget = Vector3.Distance(targetPos,playerPos);
+		if(distanceToTarget <= MAX_DISTANCE)
+			DrawBlip(playerPos,targetPos,distanceToTarget);
 	}
 	
-	private void DrawBlip(Vector3 playerPos, Vector3 targetPos, float distanceToTarget)
+	public void DrawBlip(Vector3 playerPos, Vector3 targetPos, float distanceToTarget)
 	{
 		// distance from target to player
 		float dx =  targetPos.x - playerPos.x;
@@ -41,13 +45,13 @@ public class Radar : MonoBehaviour
 		float angleToTarget = Mathf.Atan2(dx,dz) * Mathf.Rad2Deg;
 		
 		// direction player facing
-		float anglePlayer = playerController.eulerAngles.y;
+		float anglePlayer = playerController.transform.eulerAngles.y;
 		
 		// subtract player angle, to get relative angle to object
 		// subtract 90
 		// (so 0 degrees (same direction as player) is UP)
-		float angleRadarDegrees =  angleToTarget - anglePlayer - 90;
-		
+		float angleRadarDegrees =  angleToTarget - anglePlayer - 90; 
+
 		// calculate (x,y) position given angle and distance
 		float normalisedDistance = distanceToTarget / MAX_DISTANCE;	
 		float angleRadians = angleRadarDegrees * Mathf.Deg2Rad;
@@ -64,6 +68,7 @@ public class Radar : MonoBehaviour
 		
 		// draw target texture at calculated location
 		Rect blipRect = new Rect(blipX - 5, blipY - 5, 10, 10);
+
 		GUI.DrawTexture(blipRect, targetBlip);		
 	}
 }
