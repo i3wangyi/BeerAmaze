@@ -49,8 +49,14 @@ public class  ObjectBehavior: MonoBehaviour {
 			if(EnableTranslate){
 				moveDirection  =  new Vector3(CameraPosDiff.x,0,CameraPosDiff.z);
 				moveDirection = transform.TransformDirection(moveDirection);
-				controller.Move(moveDirection);	
-				this.gameObject.animation.Play("walk", PlayMode.StopAll);
+				if(moveDirection.magnitude > 1)
+				{
+					controller.Move(moveDirection);	
+					this.gameObject.animation.Play("walk", PlayMode.StopAll);
+				}
+				else{
+					this.gameObject.animation.Play("walk", PlayMode.StopAll);	
+				}
 			}
 			else{
 				moveDirection = Vector3.zero;
