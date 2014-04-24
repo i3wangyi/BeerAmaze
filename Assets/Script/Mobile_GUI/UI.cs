@@ -6,6 +6,9 @@ public class UI : MonoBehaviour {
 	public static bool isPlayMode = true;
 	public GameObject player;
 	public bool MazeCollision = false;
+	private bool move = false;
+	private bool rotate = false;
+	private bool radardetection = false;
 	// Use this for initialization
 	void Start () {
 	
@@ -31,24 +34,26 @@ public class UI : MonoBehaviour {
 			GUILayout.BeginArea(new Rect(0,0,600,1000) );
 
 				GUILayout.BeginVertical("box");
-
 					//Translate
 					if(GUILayout.RepeatButton("Move"))
 					{
-						player.GetComponent<ObjectBehavior>().setMove();
-						//MainObject.GetComponent<ObjectBehavior>().setCameraStatus();
+						move = true;
+				        player.GetComponent<ObjectBehavior>().setMove();
 					}
-					else{
+					else if(move){
+						move = false;
 						player.GetComponent<ObjectBehavior>().resetMove();
 					}
 
 					//Rotate
 					if(GUILayout.RepeatButton("Look around"))
 					{
+						rotate = true;
 						player.GetComponent<ObjectBehavior>().setRotate();
 						//MainObject.GetComponent<ObjectBehavior>().setCameraStatus();
 					}
-					else{
+					else if(rotate){
+						rotate = false;	
 						player.GetComponent<ObjectBehavior>().resetRotate();
 					}
 
@@ -60,6 +65,10 @@ public class UI : MonoBehaviour {
 					{
 						GUILayout.TextField("Collision Detection");
 					}
+					if(radardetection)
+					{
+						GUILayout.TextField("Radar detection");
+					}
 					
 				GUILayout.EndVertical();
 
@@ -67,9 +76,14 @@ public class UI : MonoBehaviour {
 		}
 	}
 
+	//For debug
 	public void setMazeCollision(bool c)
 	{
 		MazeCollision = c;
+	}
+	public void setRadar(bool c)
+	{
+		radardetection = c;
 	}
 	                            
 

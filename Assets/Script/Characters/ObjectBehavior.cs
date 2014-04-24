@@ -1,28 +1,24 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
-public class ObjectBehavior : MonoBehaviour {
-
+public class  ObjectBehavior: MonoBehaviour {
 	public static bool isPlayMode = true;
 	public bool EnableTranslate = false;
 	public bool EnableRotate = false;
 
-	// Object moves as camera moves
+	public Vector3 moveDirection =Vector3.zero;
 	private GameObject camera;
 	public Vector3 CameraPrevPos;
 	public Vector3 CameraPrevOri;
 	public Vector3 CameraNewPos;
 	public Vector3 CameraNewOri;
 
-
 	private Vector3 CameraPosDiff;
 	private float  CameraAngleDiff;
 
 	// Use this for initialization
-	void Start () 
-	{
+	void Start () {
 		camera = GameObject.Find ("MainCamera");
-
 		CameraNewPos = camera.transform.position;
 		CameraNewOri = camera.transform.eulerAngles;
 		CameraPrevPos = CameraNewPos;
@@ -30,45 +26,45 @@ public class ObjectBehavior : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-
-	void Update () 
-	{
+	void Update () {
+		CharacterController controller = GetComponent<CharacterController>();	
 		CameraNewPos = camera.transform.position;
 		CameraNewOri = camera.transform.eulerAngles;
-
+		
 		CameraPosDiff = CameraNewPos - CameraPrevPos;
-//		float dx = CameraNewOri.x - CameraPrevOri.x;
-//		float dz = CameraNewOri.z - CameraPrevOri.z;
-		float dy = CameraNewOri.y;
-		CameraAngleDiff = dy * Mathf.Rad2Deg;
-		float playerAngle = this.transform.eulerAngles.y * Mathf.Rad2Deg;
-		// subtract player angle, to get relative angle to object
-		// subtract 90
-		// (so 0 degrees (same direction as player) is UP)
-		float angleToCamera = playerAngle - CameraAngleDiff;
+		float oldx = this.transform.position.x;
+		float oldz = this.transform.position.z;
+		float dx = CameraPosDiff.x;
+		float dz = CameraPosDiff.z;
+		CameraAngleDiff = Mathf.Atan2(dx,dz)* Mathf.Rad2Deg;
+		float playerAngle = this.transform.eulerAngles.y;
+		float theta =  CameraAngleDiff - playerAngle - 90; 
 
-		if (isPlayMode) {
+//		float newX = 
+//		float 
+		float NewAngle = playerAngle + theta/10;
 
-			//May scale proportionally to camera's movement
-			if(EnableTranslate)
-			{
 
-				Debug.Log (CameraPosDiff.x.ToString() + " " +CameraPosDiff.z.ToString());
-				//Control move in the plane
-				this.transform.position += new Vector3(CameraPosDiff.x,0,CameraPosDiff.z);
+		if(isPlayMode){
+			if(EnableTranslate){
+				moveDirection  =  new Vector3(CameraPosDiff.x,0,CameraPosDiff.z);
+				moveDirection = transform.TransformDirection(moveDirection);
+				controller.Move(moveDirection);	
 				this.gameObject.animation.Play("walk", PlayMode.StopAll);
 			}
+			else{
+				moveDirection = Vector3.zero;
+			}	
 			if(EnableRotate)
 			{
-				//transform.eulerAngles = new Vector3(transform.eulerAngles.x, CameraNewOri.y, transform.eulerAngles.z);
-				this.transform.eulerAngles -= new Vector3(0,CameraPosDiff.y,0);
-				
+				if(true){
+					this.transform.eulerAngles -= new Vector3(0,theta * Mathf.Deg2Rad,0);
+				}
 			}
 		}
 
 		CameraPrevPos = CameraNewPos;
 		CameraPrevOri = CameraNewOri;
-
 	}
 
 	public void setPlayMode()
@@ -95,5 +91,4 @@ public class ObjectBehavior : MonoBehaviour {
 	{
 		EnableRotate = false;
 	}
-	
 }
