@@ -66,7 +66,6 @@ public class Radar : MonoBehaviour
 		Rect blipRect = new Rect(Screen.width - 10 - blipX - 5, Screen.height - 10 - blipY - 5, 10, 10);
 
 		GUI.DrawTexture(blipRect, targetBlip);		
-		GameObject.Find("MainCamera").GetComponent<UI>().setRadar(true);
 
 	}
 }

@@ -16,7 +16,7 @@ public class UI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+//		this.transform.LookAt(player.transform.position);	
 	}
 
 	void OnGUI()
@@ -50,7 +50,6 @@ public class UI : MonoBehaviour {
 					{
 						rotate = true;
 						player.GetComponent<ObjectBehavior>().setRotate();
-						//MainObject.GetComponent<ObjectBehavior>().setCameraStatus();
 					}
 					else if(rotate){
 						rotate = false;	

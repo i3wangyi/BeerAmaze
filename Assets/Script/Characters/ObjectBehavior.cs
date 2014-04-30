@@ -44,7 +44,6 @@ public class  ObjectBehavior: MonoBehaviour {
 //		float 
 		float NewAngle = playerAngle + theta/10;
 
-
 		if(isPlayMode){
 			if(EnableTranslate){
 				moveDirection  =  new Vector3(CameraPosDiff.x,0,CameraPosDiff.z);
