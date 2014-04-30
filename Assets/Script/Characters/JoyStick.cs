@@ -15,7 +15,7 @@ public class JoyStick : TouchLogic
 	public enum JoystickType {Movement, LookRotation, SkyColor};
 	public JoystickType joystickType;
 	public Transform player = null;
-	public float playerSpeed = 5f, maxJoyDelta = 0.2f, rotateSpeed = 100.0f;
+	public float playerSpeed = 10f, maxJoyDelta = 0.2f, rotateSpeed = 5.0f;
 	private Vector3 oJoyPos, joyDelta;
 	private Transform joyTrans = null;
 	public CharacterController troller;
@@ -86,8 +86,7 @@ public class JoyStick : TouchLogic
 			//limit so we dont do backflips
 			pitch = Mathf.Clamp(pitch, -80, 80);
 			//do the rotations of our camera 
-			Debug.Log(pitch + "," + yaw);
-			player.eulerAngles += new Vector3 (pitch, yaw, 0.0f);
+			player.eulerAngles += new Vector3 (0.0f, yaw, 0.0f);
 			break;
 		case JoystickType.SkyColor:
 			Camera.mainCamera.backgroundColor = new Color(joyDelta.x, joyDelta.z, joyDelta.x*joyDelta.z);

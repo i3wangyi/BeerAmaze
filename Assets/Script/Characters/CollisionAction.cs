@@ -33,4 +33,12 @@ public class CollisionAction : MonoBehaviour {
 		this.transform.position = pos;
 		this.transform.eulerAngles = ori;
 	}
+
+	void OnControllerColliderHit(ControllerColliderHit hit)
+	{
+		if(hit.transform.tag == "object")
+		{
+			hit.transform.SendMessage("delete",SendMessageOptions.DontRequireReceiver);
+		}
+	}
 }
