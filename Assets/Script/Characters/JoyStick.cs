@@ -71,22 +71,35 @@ public class JoyStick : TouchLogic
 	
 	void ApplyDeltaJoy()
 	{
+		Vector3 moveDirection;
+		float Angle;
+
+
 		switch(joystickType)
 		{
 		case JoystickType.Movement:
-			Vector3 moveDirection  =  new Vector3(joyDelta.x,0, joyDelta.z);
-//			troller.Move ((player.forward * joyDelta.z + player.right * joyDelta.x) * playerSpeed * Time.deltaTime);
+			moveDirection  =  new Vector3(joyDelta.x,0, joyDelta.z);
+
+			Angle = Mathf.Atan2(joyDelta.x,joyDelta.z) * Mathf.Rad2Deg;
+			player.eulerAngles = new Vector3(player.eulerAngles.x, Angle, player.eulerAngles.z);
+
 			moveDirection = transform.TransformDirection(moveDirection);
 			troller.Move(moveDirection);
 			Character.gameObject.animation.Play("walk", PlayMode.StopAll);
 			break;
 		case JoystickType.LookRotation:
-			pitch -= Input.GetTouch(touch2Watch).deltaPosition.y * rotateSpeed * Time.deltaTime;
-			yaw += Input.GetTouch(touch2Watch).deltaPosition.x * rotateSpeed * Time.deltaTime;
-			//limit so we dont do backflips
-			pitch = Mathf.Clamp(pitch, -80, 80);
+//			pitch -= Input.GetTouch(touch2Watch).deltaPosition.y * rotateSpeed * Time.deltaTime;
+//
+//			yaw += Input.GetTouch(touch2Watch).deltaPosition.x * rotateSpeed * Time.deltaTime;
+//			//limit so we dont do backflips
+//			pitch = Mathf.Clamp(pitch, -80, 80);
 			//do the rotations of our camera 
-			player.eulerAngles += new Vector3 (0.0f, yaw, 0.0f);
+			moveDirection  =  new Vector3(joyDelta.x,0, joyDelta.z);
+			
+			Angle = Mathf.Atan2(joyDelta.x,joyDelta.z) * Mathf.Rad2Deg;
+
+			player.eulerAngles = new Vector3 (player.eulerAngles.x, yaw, player.eulerAngles.z);
+
 			break;
 		case JoystickType.SkyColor:
 			Camera.mainCamera.backgroundColor = new Color(joyDelta.x, joyDelta.z, joyDelta.x*joyDelta.z);
