@@ -7319,7 +7319,7 @@ Renderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1833197097}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_LightmapIndex: 255
@@ -7361,8 +7361,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1833197097}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .280000001, z: 0}
-  m_LocalScale: {x: .267216206, y: .267216206, z: .167010188}
+  m_LocalPosition: {x: 0, y: .230000004, z: 0}
+  m_LocalScale: {x: 1.20495689, y: 1.20495689, z: .753098667}
   m_Children: []
   m_Father: {fileID: 31283913}
 --- !u!1 &1838181669
