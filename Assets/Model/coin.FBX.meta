@@ -1,15 +1,13 @@
 fileFormatVersion: 2
-guid: 844cc622f29bb4abb9eaf9f8216bb1bb
+guid: 7440034e6f3214f038adac2e229f1258
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: TyveKrone
-    100002: //RootNode
-    400000: TyveKrone
-    400002: //RootNode
-    2300000: TyveKrone
-    3300000: TyveKrone
-    4300000: TyveKrone
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Cylinder002
     9500000: //RootNode
   materials:
     importMaterials: 1

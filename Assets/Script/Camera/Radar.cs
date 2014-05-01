@@ -5,7 +5,7 @@ using System.Collections;
 public class Radar : MonoBehaviour
 {
 	const float MAX_DISTANCE = 200f;
-	const int RADAR_SIZE = 100;
+	const int RADAR_SIZE = 200;
 	
 	public Transform playerController;
 	public Texture radarBackground;

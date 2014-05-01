@@ -5,7 +5,6 @@ public class UI : MonoBehaviour {
 	//Indicate which play mode at present
 	public static bool isPlayMode = true;
 	public GameObject player;
-	public bool MazeCollision = false;
 	private bool move = false;
 	private bool rotate = false;
 	private bool radardetection = false;
@@ -50,17 +49,7 @@ public class UI : MonoBehaviour {
 		}
 	}
 
-	//For debug
-	public void setMazeCollision(bool c)
-	{
-		MazeCollision = c;
-	}
-	public void setRadar(bool c)
-	{
-		radardetection = c;
-	}
 	                            
-
 	Rect ResizeGUI(Rect _rect)
 	{
 		float FilScreenWidth = _rect.width / 800;
