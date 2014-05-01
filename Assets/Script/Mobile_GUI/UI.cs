@@ -9,14 +9,21 @@ public class UI : MonoBehaviour {
 	private bool move = false;
 	private bool rotate = false;
 	private bool radardetection = false;
+	private int coinCount;
+	private float timeCost;
 	// Use this for initialization
 	void Start () {
-	
+		coinCount = 0;
+		timeCost = 0;
 	}
-	
+
+	public void coinAdd(int value){
+		coinCount = coinCount + value;
+		}
 	// Update is called once per frame
 	void Update () {
-	
+//		this.transform.LookAt(player.transform.position);
+		timeCost -= Time.deltaTime;
 	}
 
 	void OnGUI()
@@ -34,42 +41,8 @@ public class UI : MonoBehaviour {
 			GUILayout.BeginArea(new Rect(0,0,600,1000) );
 
 				GUILayout.BeginVertical("box");
-					//Translate
-					if(GUILayout.RepeatButton("Move"))
-					{
-						move = true;
-				        player.GetComponent<ObjectBehavior>().setMove();
-					}
-					else if(move){
-						move = false;
-						player.GetComponent<ObjectBehavior>().resetMove();
-					}
-
-					//Rotate
-					if(GUILayout.RepeatButton("Look around"))
-					{
-						rotate = true;
-						player.GetComponent<ObjectBehavior>().setRotate();
-						//MainObject.GetComponent<ObjectBehavior>().setCameraStatus();
-					}
-					else if(rotate){
-						rotate = false;	
-						player.GetComponent<ObjectBehavior>().resetRotate();
-					}
-
-					//For debug camera's position
-					GUILayout.TextField(this.transform.position.ToString());
-					GUILayout.TextField("("+(int)this.transform.eulerAngles.x+","+(int)this.transform.eulerAngles.y+","+(int)this.transform.eulerAngles.z + ")");
-					
-					if(MazeCollision)
-					{
-						GUILayout.TextField("Collision Detection");
-					}
-					if(radardetection)
-					{
-						GUILayout.TextField("Radar detection");
-					}
-					
+				GUILayout.Label("Timer:" + timeCost.ToString());
+				GUILayout.Label("Points:" + coinCount.ToString());
 				GUILayout.EndVertical();
 
 			GUILayout.EndArea();

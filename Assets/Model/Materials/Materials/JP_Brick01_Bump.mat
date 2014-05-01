@@ -44,16 +44,16 @@ Material:
     m_Floats:
       data:
         first:
+          name: _InvFade
+        second: 1
+      data:
+        first:
           name: _Shininess
         second: .699999988
       data:
         first:
           name: _Parallax
         second: .0199999996
-      data:
-        first:
-          name: _InvFade
-        second: 1
     m_Colors:
       data:
         first:
