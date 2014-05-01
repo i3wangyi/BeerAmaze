@@ -9,6 +9,7 @@ public class MazeSelection : MonoBehaviour {
 	private Vector2 endPos;
 	private GameObject currentObj;
 	private float countDown;
+	private bool setTimer;
 	// Use this for initialization
 	void Start () {
 		objArray = new GameObject[4];
@@ -26,22 +27,30 @@ public class MazeSelection : MonoBehaviour {
 				}
 		it = 0;
 		currentObj = objArray [0];
-		countDown = 300.0f;
+		countDown = 10.0f;
+		setTimer = false;
 
 	}
-	
+	public void SetTimer1()
+	{
+		setTimer = true;
+	}
+	public void SetTimer2()
+	{
+		setTimer = false;
+	}
 	// Update is called once per frame
 	void OnGUI(){
-		countDown -= Time.deltaTime;
-		GUI.skin.GetStyle ("Label").fontSize = 45;
+		GUI.skin.GetStyle ("Label").fontSize = 90;
 		GUILayout.BeginArea (new Rect (Screen.width/2 - 300, Screen.height/2 - 500, 600, 1000));
 		GUILayout.BeginVertical ("box");
 		GUILayout.Label (countDown.ToString ());
 		GUILayout.EndVertical ();
 		GUILayout.EndArea ();
 		}
+
 	void Update () {
-			for (int i = 0; i < Input.touchCount; i++) {
+		for (int i = 0; i < Input.touchCount; i++) {
 			if(Input.GetTouch(i).phase == TouchPhase.Began)
 			{
 				startPos = Input.GetTouch(i).position;
@@ -68,8 +77,18 @@ public class MazeSelection : MonoBehaviour {
 					currentObj = objArray[it];
 					currentObj.transform.eulerAngles = startOri[it];
 				}
+				if(Mathf.Abs(endPos.y - startPos.y) > 100)
+				{
+					Application.LoadLevel ("BeerAmaze");
+				}
 			}
 		}
+		if(countDown < 0)
+		{
+			Application.LoadLevel ("BeerAmaze");
+		}
+		if (setTimer)
+			countDown -= Time.deltaTime;
 		currentObj.transform.Rotate (0, 10 * Time.deltaTime, 0);
 	}
 }

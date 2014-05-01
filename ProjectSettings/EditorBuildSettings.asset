@@ -9,3 +9,5 @@ EditorBuildSettings:
     path: Assets/Welcome.unity
   - enabled: 1
     path: Assets/MazeSelection.unity
+  - enabled: 1
+    path: Assets/BeerAmaze.unity
