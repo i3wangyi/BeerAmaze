@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+static public class Maze
+{
+	static public string mazeSelected;
+}
 public class MazeSelection : MonoBehaviour {
 	private GameObject[] objArray;
 	private Vector3[] startOri;
@@ -10,19 +13,17 @@ public class MazeSelection : MonoBehaviour {
 	private GameObject currentObj;
 	private float countDown;
 	private bool setTimer;
+	private int mazeNum;
 	// Use this for initialization
 	void Start () {
-		objArray = new GameObject[4];
-		startOri = new Vector3[4];
-		objArray [0] = GameObject.Find ("Capsule");
-		objArray [1] = GameObject.Find ("Cube");
-		objArray [2] = GameObject.Find ("Cylinder");
-		objArray [3] = GameObject.Find ("Sphere");
+		mazeNum = 2;
+		objArray = new GameObject[mazeNum ];
+		startOri = new Vector3[mazeNum ];
+		objArray [0] = GameObject.Find ("maze6");
+		objArray [1] = GameObject.Find ("maze11");
 		objArray [0].SetActive(true);
 		objArray [1].SetActive(false);
-		objArray [2].SetActive(false);
-		objArray [3].SetActive(false);
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < mazeNum ; i++) {
 			startOri[i] = objArray[i].transform.eulerAngles;
 				}
 		it = 0;
@@ -61,7 +62,7 @@ public class MazeSelection : MonoBehaviour {
 				if(endPos.x - startPos.x > 0)
 				{
 					objArray[it].SetActive(false);
-					it = (it + 1) % 4;
+					it = (it + 1) % mazeNum ;
 					objArray[it].SetActive(true);
 					currentObj = objArray[it];
 					currentObj.transform.eulerAngles = startOri[it];
@@ -70,7 +71,7 @@ public class MazeSelection : MonoBehaviour {
 				{
 					objArray[it].SetActive(false);
 					if(it == 0)
-						it = 3;
+						it = mazeNum - 1;
 					else
 						it --;
 					objArray[it].SetActive(true);
@@ -85,6 +86,7 @@ public class MazeSelection : MonoBehaviour {
 		}
 		if(countDown < 0)
 		{
+			Maze.mazeSelected = objArray[it].name;
 			Application.LoadLevel ("BeerAmaze");
 		}
 		if (setTimer)
