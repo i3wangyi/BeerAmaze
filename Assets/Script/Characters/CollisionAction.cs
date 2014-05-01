@@ -22,11 +22,11 @@ public class CollisionAction : MonoBehaviour {
 
 	void OnControllerColliderHit(ControllerColliderHit hit)
 	{
-		hit.transform.GetComponent<ToolBehavior>().delete();
 
 		if(hit.transform.tag == "Coin")
 		{
-
+			hit.transform.GetComponent<ToolBehavior>().delete();
+			UI.coinAdd(10);
 		}
 		else if(hit.transform.tag == "Mushroom")
 		{
