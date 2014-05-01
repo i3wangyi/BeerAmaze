@@ -5,7 +5,7 @@ using System.Collections;
 public class Radar : MonoBehaviour
 {
 	const float MAX_DISTANCE = 200f;
-	const int RADAR_SIZE = 300;
+	const int RADAR_SIZE = 100;
 	
 	public Transform playerController;
 	public Texture radarBackground;
@@ -14,10 +14,10 @@ public class Radar : MonoBehaviour
 	void OnGUI()
 	{
 		// background displaying top left in square of 128 pixels
-		Rect radarBackgroundRect = new Rect(0,0, RADAR_SIZE, RADAR_SIZE);
+		Rect radarBackgroundRect = new Rect(Screen.width - RADAR_SIZE, 0, RADAR_SIZE, RADAR_SIZE);
 		GUI.DrawTexture(radarBackgroundRect,radarBackground);
 		// find all 'cube' tagged objects
-		GameObject[] cubeGOArray = GameObject.FindGameObjectsWithTag("object");
+		GameObject[] cubeGOArray = GameObject.FindGameObjectsWithTag("Coin");
 		
 		// draw blips for all within distance
 		Vector3 playerPos = playerController.position;
@@ -41,18 +41,18 @@ public class Radar : MonoBehaviour
 		float angleToTarget = Mathf.Atan2(dx,dz) * Mathf.Rad2Deg;
 		
 		// direction player facing
-		float anglePlayer = playerController.eulerAngles.y;
+//		float anglePlayer = playerController.eulerAngles.y;
 		
 		// subtract player angle, to get relative angle to object
 		// subtract 90
 		// (so 0 degrees (same direction as player) is UP)
-		float angleRadarDegrees =  angleToTarget - anglePlayer - 90; 
+		float angleRadarDegrees =  angleToTarget; 
 
 		// calculate (x,y) position given angle and distance
 		float normalisedDistance = distanceToTarget / MAX_DISTANCE;	
 		float angleRadians = angleRadarDegrees * Mathf.Deg2Rad;
-		float blipX = -normalisedDistance * Mathf.Cos(angleRadians);
-		float blipY = -normalisedDistance * Mathf.Sin(angleRadians);	
+		float blipX = normalisedDistance * Mathf.Cos(angleRadians);
+		float blipY = normalisedDistance * Mathf.Sin(angleRadians);	
 		
 		// scale blip position according to radar size
 		blipX *= RADAR_SIZE/2;
@@ -63,7 +63,7 @@ public class Radar : MonoBehaviour
 		blipY += RADAR_SIZE/2;
 		
 		// draw target texture at calculated location
-		Rect blipRect = new Rect(blipX, blipY, 10, 10);
+		Rect blipRect = new Rect(Screen.width  - RADAR_SIZE + blipY - 10 , RADAR_SIZE - blipX + 15 , 10, 10);
 
 		GUI.DrawTexture(blipRect, targetBlip);		
 

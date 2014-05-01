@@ -9,21 +9,22 @@ public class UI : MonoBehaviour {
 	private bool move = false;
 	private bool rotate = false;
 	private bool radardetection = false;
-	private int coinCount;
-	private float timeCost;
+	private static int coinCount;
+	private static float timeCost;
 	// Use this for initialization
 	void Start () {
 		coinCount = 0;
 		timeCost = 0;
 	}
 
-	public void coinAdd(int value){
+	public static void coinAdd(int value){
 		coinCount = coinCount + value;
 		}
+
 	// Update is called once per frame
 	void Update () {
 //		this.transform.LookAt(player.transform.position);
-		timeCost -= Time.deltaTime;
+		timeCost += Time.deltaTime;
 	}
 
 	void OnGUI()
@@ -41,7 +42,7 @@ public class UI : MonoBehaviour {
 			GUILayout.BeginArea(new Rect(0,0,600,1000) );
 
 				GUILayout.BeginVertical("box");
-				GUILayout.Label("Timer:" + timeCost.ToString());
+				GUILayout.Label("Timer:" + Mathf.CeilToInt(timeCost).ToString());
 				GUILayout.Label("Points:" + coinCount.ToString());
 				GUILayout.EndVertical();
 
