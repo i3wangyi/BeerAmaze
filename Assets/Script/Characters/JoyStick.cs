@@ -74,7 +74,6 @@ public class JoyStick : TouchLogic
 		Vector3 moveDirection;
 		float Angle;
 
-
 		switch(joystickType)
 		{
 		case JoystickType.Movement:
@@ -98,7 +97,7 @@ public class JoyStick : TouchLogic
 			
 			Angle = Mathf.Atan2(joyDelta.x,joyDelta.z) * Mathf.Rad2Deg;
 
-			player.eulerAngles = new Vector3 (player.eulerAngles.x, yaw, player.eulerAngles.z);
+			player.eulerAngles = new Vector3 (player.eulerAngles.x, Angle, player.eulerAngles.z);
 
 			break;
 		case JoystickType.SkyColor:
