@@ -39,4 +39,10 @@ public class MonstrerBehavior : MonoBehaviour
 		}
 
 	}
+
+	public void setDeath()
+	{
+		this.gameObject.animation.Play("death", PlayMode.StopAll);
+	}
+
 }
