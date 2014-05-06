@@ -4,10 +4,14 @@ using System.Collections;
 public class CollisionAction : MonoBehaviour {
 	//Record original scale
 	private Vector3 originScale;
+	private Vector3 originPos;
+	private Vector3 originOri;
 	private bool IMBA = false;
 	// Use this for initialization
 	void Start () {
-		 originScale = this.transform.localScale;
+		originScale = this.transform.localScale;
+		originPos = this.transform.position;
+		originOri = this.transform.eulerAngles;
 	}
 	
 	// Update is called once per frame
@@ -43,10 +47,12 @@ public class CollisionAction : MonoBehaviour {
 		{
 			if(IMBA)
 			{
-								
+				//Death
+				hit.transform.GetComponent<MonstrerBehavior>().setDeath();			
 			}
 			else{
-					
+				//reset to its original position	
+				reset();
 			}
 		}
 	}
@@ -56,4 +62,9 @@ public class CollisionAction : MonoBehaviour {
 		this.transform.localScale = originScale;
 	}
 
+	private void reset()
+	{
+		this.transform.position = originPos;
+		this.transform.eulerAngles = originOri;
+	}
 }
