@@ -74,33 +74,29 @@ NavMeshSettings:
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
   m_NavMesh: {fileID: 0}
---- !u!1 &605149862
+--- !u!1 &364081139
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 605149868}
-  - 20: {fileID: 605149867}
-  - 124: {fileID: 605149866}
-  - 92: {fileID: 605149865}
-  - 81: {fileID: 605149864}
-  - 114: {fileID: 605149863}
-  - 114: {fileID: 605149869}
+  - 4: {fileID: 364081142}
+  - 114: {fileID: 364081141}
+  - 114: {fileID: 364081140}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: MENU
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &605149863
+--- !u!114 &364081140
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 605149862}
+  m_GameObject: {fileID: 364081139}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fa1e7009427e1e4b9389a294927b814, type: 3}
@@ -110,73 +106,12 @@ MonoBehaviour:
   HelpSelected: 0
   AboutUsSelected: 0
   backgroundTexture: {fileID: 2800000, guid: 7f6f895bab3812842827fe9698341dfa, type: 3}
---- !u!81 &605149864
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 605149862}
-  m_Enabled: 1
---- !u!92 &605149865
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 605149862}
-  m_Enabled: 1
---- !u!124 &605149866
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 605149862}
-  m_Enabled: 1
---- !u!20 &605149867
-Camera:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 605149862}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: .300000012
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_HDR: 0
-  m_OcclusionCulling: 1
---- !u!4 &605149868
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 605149862}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 473.776794, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
---- !u!114 &605149869
+--- !u!114 &364081141
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 605149862}
+  m_GameObject: {fileID: 364081139}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13ea636cbc63c1e4b821e2db9b447e6e, type: 3}
@@ -187,6 +122,17 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 82ef9655ae9ae9d479bd5d5df342a4b5, type: 3}
   - {fileID: 2800000, guid: 32bb3b3ba5538ae4b99c8b6c56007a83, type: 3}
   - {fileID: 2800000, guid: 8bc5e9b4513d0ef408c0c54e6b03ea53, type: 3}
-  nextTex: {fileID: 2800000, guid: 999538beb990c494294b72db6e7b5c8e, type: 3}
-  preTex: {fileID: 2800000, guid: e5eab914ab31ba3478ebf8c3d097850d, type: 3}
+  nextTex: {fileID: 2800000, guid: 6bba321a2a9034c4484d587e4dc5fc7e, type: 3}
+  preTex: {fileID: 2800000, guid: c6c5ba95cb87ca841a7150c0bbdd8457, type: 3}
   info: 0
+--- !u!4 &364081142
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 364081139}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 48.9567528, y: 177.672607, z: 31.0593567}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}

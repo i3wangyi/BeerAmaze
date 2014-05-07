@@ -10,6 +10,7 @@ public class StartMenuScript : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
+//		this.enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -50,7 +51,7 @@ public class StartMenuScript : MonoBehaviour
 			{
 				startMenu = false;
 				HelpSelected = false;
-				GameObject.Find("Camera").GetComponent<InfoShow>().info = true;
+				GameObject.Find("MENU").GetComponent<InfoShow>().info = true;
 			}
 			if(AboutUsSelected)
 			{
@@ -59,6 +60,12 @@ public class StartMenuScript : MonoBehaviour
 					AboutUsSelected = false;
 				}
 			}
+
+			if(GUILayout.Button("Quit"))
+			{
+				Application.Quit();
+			}
+
 			GUILayout.EndVertical ();
 			GUILayout.EndArea ();
 		}
