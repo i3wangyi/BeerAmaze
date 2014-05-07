@@ -55,11 +55,16 @@ public class CollisionAction : MonoBehaviour {
 				reset();
 			}
 		}
+		else if(hit.transform.tag == "Beer")
+		{
+			
+		}
 	}
 	
 	public void resetScale()
 	{
 		this.transform.localScale = originScale;
+		IMBA = false;
 	}
 
 	private void reset()
