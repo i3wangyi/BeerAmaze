@@ -16,13 +16,13 @@ public class MazeSelection : MonoBehaviour {
 	private int mazeNum;
 	// Use this for initialization
 	void Start () {
-		mazeNum = 2;
+		mazeNum = 1;
 		objArray = new GameObject[mazeNum ];
 		startOri = new Vector3[mazeNum ];
 		objArray [0] = GameObject.Find ("maze6");
-		objArray [1] = GameObject.Find ("maze11");
+//		objArray [1] = GameObject.Find ("maze11");
 		objArray [0].SetActive(true);
-		objArray [1].SetActive(false);
+//		objArray [1].SetActive(false);
 		for (int i = 0; i < mazeNum ; i++) {
 			startOri[i] = objArray[i].transform.eulerAngles;
 				}

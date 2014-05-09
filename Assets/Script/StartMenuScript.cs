@@ -35,7 +35,7 @@ public class StartMenuScript : MonoBehaviour
 
 					//Start
 					if (GUILayout.Button ("Start!")) {
-							Application.LoadLevel ("MazeSelection");
+							Application.LoadLevel ("BeerAmaze");
 					}
 					//Help
 					if (GUILayout.Button ("Help")) {

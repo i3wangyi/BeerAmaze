@@ -105,7 +105,7 @@ MonoBehaviour:
   startMenu: 1
   HelpSelected: 0
   AboutUsSelected: 0
-  backgroundTexture: {fileID: 2800000, guid: 7f6f895bab3812842827fe9698341dfa, type: 3}
+  backgroundTexture: {fileID: 2800000, guid: c40ff048ca868408fad977d1e828df29, type: 3}
 --- !u!114 &364081141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,9 +119,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   count: 0
   infoImage:
-  - {fileID: 2800000, guid: 82ef9655ae9ae9d479bd5d5df342a4b5, type: 3}
-  - {fileID: 2800000, guid: 32bb3b3ba5538ae4b99c8b6c56007a83, type: 3}
-  - {fileID: 2800000, guid: 8bc5e9b4513d0ef408c0c54e6b03ea53, type: 3}
+  - {fileID: 2800000, guid: 4f7925c5efb1e4df7944ec0fbb6d8566, type: 3}
+  - {fileID: 2800000, guid: cddab0ca1a3cf4b3eb75d6b493166d26, type: 3}
+  - {fileID: 2800000, guid: 98bb1c98f21544e30802b265d2756756, type: 3}
   nextTex: {fileID: 2800000, guid: 6bba321a2a9034c4484d587e4dc5fc7e, type: 3}
   preTex: {fileID: 2800000, guid: c6c5ba95cb87ca841a7150c0bbdd8457, type: 3}
   info: 0
