@@ -10,6 +10,8 @@ public class UI : MonoBehaviour {
 
 	private static float duration = 0;
 	private static bool scale = false;
+
+	private int n = 0; 
 	// Use this for initialization
 	void Start () {
 		coinCount = 0;
@@ -52,17 +54,39 @@ public class UI : MonoBehaviour {
 		GUI.skin.GetStyle ("HorizontalSlider").fixedHeight = 45;
 		GUI.skin.GetStyle ("HorizontalSlider").fixedWidth = 300;
 		GUI.skin.GetStyle("box").fontSize = 45;
-
+		GUI.skin.GetStyle ("Label").alignment = TextAnchor.MiddleCenter;
+		GUI.skin.GetStyle ("Button").alignment = TextAnchor.MiddleCenter;
 		if(isPlayMode)
 		{
-			GUILayout.BeginArea(new Rect(0,0,600,1000) );
+			GUILayout.BeginArea(new Rect(0,0,300,1000) );
 
 				GUILayout.BeginVertical("box");
 				GUILayout.Label("Timer:" + Mathf.CeilToInt(timeCost).ToString());
 				GUILayout.Label("Points:" + coinCount.ToString());
+				if(GUILayout.Button("Setting"))
+				{
+				if(n == 0) n = 1;
+				else n = 0;
+				}
 				GUILayout.EndVertical();
 
 			GUILayout.EndArea();
+			if(n == 1)
+			{
+				GUILayout.BeginArea(new Rect(300,125,300,1000) );
+				
+				GUILayout.BeginVertical("box");
+				if(GUILayout.Button ("View Switch"))
+				{
+				}
+				if(GUILayout.Button ("Exit"))
+				{
+					Application.LoadLevel ("Welcome");
+				}
+				GUILayout.EndVertical();
+				
+				GUILayout.EndArea();
+			}
 		}
 	}
 

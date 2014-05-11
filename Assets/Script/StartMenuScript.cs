@@ -28,14 +28,14 @@ public class StartMenuScript : MonoBehaviour
 			GUI.skin.GetStyle ("TextField").fontSize = 45;	
 			GUI.skin.GetStyle ("box").fontSize = 45;
 			GUI.DrawTexture (new Rect (0, 0, Screen.width, Screen.height), backgroundTexture);
-			GUILayout.BeginArea (new Rect (Screen.width / 2 - 300, Screen.height / 2 - 500, 600, 1000));
+			GUILayout.BeginArea (new Rect (Screen.width / 2 - 300, Screen.height / 2 + 250, 600, 600));
 			GUILayout.BeginVertical ("box");
 
 			if (!AboutUsSelected && !HelpSelected) {
 
 					//Start
 					if (GUILayout.Button ("Start!")) {
-							Application.LoadLevel ("BeerAmaze");
+							Application.LoadLevel ("MazeSelection");
 					}
 					//Help
 					if (GUILayout.Button ("Help")) {
@@ -56,7 +56,7 @@ public class StartMenuScript : MonoBehaviour
 			if(AboutUsSelected)
 			{
 				GUILayout.TextField ("Welcome to OurMazeGame!!");
-				if (GUILayout.Button ("CLOSE")) {
+				if (GUILayout.Button ("Close")) {
 					AboutUsSelected = false;
 				}
 			}
