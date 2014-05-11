@@ -34,7 +34,7 @@ public class InfoShow : MonoBehaviour {
 				{
 					info = false;
 					count = 0;
-					GameObject.Find("Camera").GetComponent<StartMenuScript>().startMenu = true;
+					GameObject.Find("MENU").GetComponent<StartMenuScript>().startMenu = true;
 				}
 			}
 			GUILayout.EndHorizontal ();
