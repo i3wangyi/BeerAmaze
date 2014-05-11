@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 //Go left and right
-public class MonsterBehavior2 : MonoBehaviour {
-
+public class MonsterBehavior2 : MonoBehaviour 
+{
 	private string direction = "left";
 	private bool isDeath = false;
 	
@@ -34,19 +34,40 @@ public class MonsterBehavior2 : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider col) 
 	{
-		Debug.Log ("collision"+col.ToString());
-		if(direction.Equals("right"))
+
+		if(!isDeath && !col.gameObject.tag.ToString().Equals("Player"))
 		{
-			direction = "left";
-			this.gameObject.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
+			if(direction.Equals("right"))
+			{
+				direction = "left";
+				this.gameObject.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
+			}
+			else if(direction.Equals("left"))
+			{
+				direction = "right";
+				this.gameObject.transform.localEulerAngles = new Vector3(0f, 180f, 0f);
+			}
 		}
-		else if(direction.Equals("left"))
+		else if(!isDeath && col.gameObject.tag.ToString().Equals("Player"))
 		{
-			direction = "right";
-			this.gameObject.transform.localEulerAngles = new Vector3(0f, 180f, 0f);
+			if(col.GetComponent<CollisionAction>().isIMBA())
+			{
+				setDeath();
+			}
+			else
+			{
+				col.GetComponent<CollisionAction>().reset();
+				UI.isAttacked = true;
+				Invoke("ToggleLabel", 2);
+			}
 		}
 	}
-	
+
+	public void ToggleLabel() 
+	{
+		UI.isAttacked = false;
+	}
+
 	/*void OnCollisionEnter(Collision col)
 	{
 		;
@@ -55,6 +76,9 @@ public class MonsterBehavior2 : MonoBehaviour {
 	public void setDeath()
 	{
 		isDeath = true;
-		this.gameObject.animation.Play("death", PlayMode.StopAll);
+		UI.coinAdd(30);
+		Destroy(this.gameObject);
+		//this.gameObject.animation.Play("death", PlayMode.StopAll);
 	}
+
 }

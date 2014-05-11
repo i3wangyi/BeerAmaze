@@ -34,17 +34,37 @@ public class MonsterBehavior1 : MonoBehaviour
 
 	void OnTriggerEnter(Collider col) 
 	{
-		Debug.Log ("collision"+col.ToString());
-		if(direction.Equals("forward"))
+		if(!isDeath && !col.gameObject.tag.ToString().Equals("Player"))
 		{
-			direction = "backward";
-			this.gameObject.transform.localEulerAngles = new Vector3(0f, 90f, 0f);
+			if(direction.Equals("forward"))
+			{
+				direction = "backward";
+				this.gameObject.transform.localEulerAngles = new Vector3(0f, 90f, 0f);
+			}
+			else if(direction.Equals("backward"))
+			{
+				direction = "forward";
+				this.gameObject.transform.localEulerAngles = new Vector3(0f, 270f, 0f);
+			}
 		}
-		else if(direction.Equals("backward"))
+		else if(!isDeath && col.gameObject.tag.ToString().Equals("Player"))
 		{
-			direction = "forward";
-			this.gameObject.transform.localEulerAngles = new Vector3(0f, 270f, 0f);
+			if(col.GetComponent<CollisionAction>().isIMBA())
+			{
+				setDeath();
+			}
+			else
+			{
+				col.GetComponent<CollisionAction>().reset();
+				UI.isAttacked = true;
+				Invoke("ToggleLabel", 2);
+			}
 		}
+	}
+
+	public void ToggleLabel() 
+	{
+		UI.isAttacked = false;
 	}
 
 	/*void OnCollisionEnter(Collision col)
@@ -55,6 +75,9 @@ public class MonsterBehavior1 : MonoBehaviour
 	public void setDeath()
 	{
 		isDeath = true;
-		this.gameObject.animation.Play("death", PlayMode.StopAll);
+		UI.coinAdd(30);
+		Destroy(this.gameObject);
+		//this.gameObject.animation.Play("death", PlayMode.StopAll);
 	}
+
 }

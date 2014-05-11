@@ -4,6 +4,8 @@ using System.Collections;
 public class UI : MonoBehaviour {
 	//Indicate which play mode at present
 	public static bool isPlayMode = true;
+	public bool EndOfGame = false;
+	public static bool isAttacked = false;
 	public GameObject player;
 	private static int coinCount;
 	private static float timeCost;
@@ -16,6 +18,7 @@ public class UI : MonoBehaviour {
 	void Start () {
 		coinCount = 0;
 		timeCost = 0;
+		Time.timeScale = 1;
 	}
 
 	public static void coinAdd(int value)
@@ -87,6 +90,37 @@ public class UI : MonoBehaviour {
 				
 				GUILayout.EndArea();
 			}
+		}
+
+		if (isAttacked) 
+		{
+			GUILayout.BeginArea(new Rect(650,300,600,1000) );
+			
+			GUILayout.BeginVertical("box");
+			GUILayout.Label("You have been attacked by a monster!!");
+			GUILayout.EndVertical();
+			GUILayout.EndArea();
+		}
+		
+		if (EndOfGame) 
+		{
+			GUILayout.BeginArea(new Rect(650,300,600,1000) );
+			
+			GUILayout.BeginVertical("box");
+			GUILayout.Label("Congratulation!! You Win!!");
+			GUILayout.Label("Timer:" + Mathf.CeilToInt(timeCost).ToString());
+			GUILayout.Label("Points:" + coinCount.ToString());
+			if (GUILayout.Button ("RESTART!!")) 
+			{
+				Application.LoadLevel ("Welcome");
+			}
+			if (GUILayout.Button ("QUIT!!")) 
+			{
+				Application.Quit();
+			}
+			GUILayout.EndVertical();
+			GUILayout.EndArea();
+			Time.timeScale = 0;
 		}
 	}
 

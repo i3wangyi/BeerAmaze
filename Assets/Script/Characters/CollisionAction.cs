@@ -43,22 +43,24 @@ public class CollisionAction : MonoBehaviour {
 			IMBA = true;
 			UI.startRecordTime();
 		}
-		else if(hit.transform.tag == "Monster")
+		else if(hit.transform.tag == "Beer")
+		{
+			GameObject.Find ("MainCamera").GetComponent<UI>().EndOfGame = true;
+		}
+		/*else if(hit.transform.tag == "Monster")
 		{
 			if(IMBA)
 			{
 				//Death
-				hit.transform.GetComponent<MonstrerBehavior>().setDeath();			
+				hit.transform.GetComponent<MonsterBehavior1>().setDeath();	
+				hit.transform.GetComponent<MonsterBehavior2>().setDeath();
+				hit.transform.GetComponent<MonsterBehavior3>().setDeath();
 			}
 			else{
 				//reset to its original position	
 				reset();
 			}
-		}
-		else if(hit.transform.tag == "Beer")
-		{
-			
-		}
+		}*/
 	}
 	
 	public void resetScale()
@@ -67,7 +69,19 @@ public class CollisionAction : MonoBehaviour {
 		IMBA = false;
 	}
 
-	private void reset()
+	public bool isIMBA()
+	{
+		if(IMBA)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	public void reset()
 	{
 		this.transform.position = originPos;
 		this.transform.eulerAngles = originOri;

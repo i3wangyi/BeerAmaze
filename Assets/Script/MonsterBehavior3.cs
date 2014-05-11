@@ -3,7 +3,6 @@ using System.Collections;
 //go right forward left backward
 public class MonsterBehavior3 : MonoBehaviour 
 {
-
 	private string direction = "right";
 	private bool isDeath = false;
 	
@@ -43,28 +42,47 @@ public class MonsterBehavior3 : MonoBehaviour
 	
 	void OnTriggerEnter(Collider col) 
 	{
-		Debug.Log ("collision"+col.ToString());
-		if(direction.Equals("right"))
+		if(!isDeath && !col.gameObject.tag.ToString().Equals("Player"))
 		{
-			direction = "forward";
-			this.gameObject.transform.localEulerAngles = new Vector3(0f, 270f, 0f);
+			if(direction.Equals("right"))
+			{
+				direction = "forward";
+				this.gameObject.transform.localEulerAngles = new Vector3(0f, 270f, 0f);	
+			}
+			else if(direction.Equals("left"))
+			{
+				direction = "backward";
+				this.gameObject.transform.localEulerAngles = new Vector3(0f, 90f, 0f);
+			}
+			else if(direction.Equals("forward"))
+			{
+				direction = "left";
+				this.gameObject.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
+			}
+			else if(direction.Equals("backward"))
+			{
+				direction = "right";
+				this.gameObject.transform.localEulerAngles = new Vector3(0f, 180f, 0f);
+			}
+		}
+		else if(!isDeath && col.gameObject.tag.ToString().Equals("Player"))
+		{
+			if(col.GetComponent<CollisionAction>().isIMBA())
+			{
+				setDeath();
+			}
+			else
+			{
+				col.GetComponent<CollisionAction>().reset();
+				UI.isAttacked = true;
+				Invoke("ToggleLabel", 2);
+			}
+		}
+	}
 
-		}
-		else if(direction.Equals("left"))
-		{
-			direction = "backward";
-			this.gameObject.transform.localEulerAngles = new Vector3(0f, 90f, 0f);
-		}
-		else if(direction.Equals("forward"))
-		{
-			direction = "left";
-			this.gameObject.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
-		}
-		else if(direction.Equals("backward"))
-		{
-			direction = "right";
-			this.gameObject.transform.localEulerAngles = new Vector3(0f, 180f, 0f);
-		}
+	public void ToggleLabel() 
+	{
+		UI.isAttacked = false;
 	}
 	
 	/*void OnCollisionEnter(Collision col)
@@ -75,6 +93,9 @@ public class MonsterBehavior3 : MonoBehaviour
 	public void setDeath()
 	{
 		isDeath = true;
-		this.gameObject.animation.Play("death", PlayMode.StopAll);
+		UI.coinAdd(30);
+		Destroy(this.gameObject);
+		//this.gameObject.animation.Play("death", PlayMode.StopAll);
 	}
+
 }
