@@ -13,3 +13,5 @@ EditorBuildSettings:
     path: Assets/BeerAmaze.unity
   - enabled: 1
     path: Assets/maze_0.unity
+  - enabled: 1
+    path: Assets/maze_1.unity
