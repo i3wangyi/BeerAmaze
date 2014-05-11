@@ -5,25 +5,42 @@ public class UI : MonoBehaviour {
 	//Indicate which play mode at present
 	public static bool isPlayMode = true;
 	public GameObject player;
-	private bool move = false;
-	private bool rotate = false;
-	private bool radardetection = false;
 	private static int coinCount;
 	private static float timeCost;
+
+	private static float duration = 0;
+	private static bool scale = false;
 	// Use this for initialization
 	void Start () {
 		coinCount = 0;
 		timeCost = 0;
 	}
 
-	public static void coinAdd(int value){
+	public static void coinAdd(int value)
+	{
 		coinCount = coinCount + value;
-		}
+	}
 
 	// Update is called once per frame
 	void Update () {
-//		this.transform.LookAt(player.transform.position);
+	//this.transform.LookAt(player.transform.position);
 		timeCost += Time.deltaTime;
+
+		if(scale)
+		{
+			//within 10s 
+			if(Mathf.CeilToInt(duration) <= 10)
+			{
+				duration += Time.deltaTime;
+			}
+			else
+			{
+				//reset to its original scale after 10 seconds
+				GameObject.Find("MAX").GetComponent<CollisionAction>().resetScale();
+				scale = false;
+			}
+		}
+
 	}
 
 	void OnGUI()
@@ -67,12 +84,22 @@ public class UI : MonoBehaviour {
 	{
 		player = Character;
 	}
-	public void setPlayMode()
+	public static void setPlayMode()
 	{
 		isPlayMode = true;
 	}
-	public void resetPlayMode()
+	public static void resetPlayMode()
 	{
 		isPlayMode = false;
 	}
+
+	public static void startRecordTime()
+	{
+		duration = 0;
+		scale = true;
+	}
+	
+
+
+
 }
