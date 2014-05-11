@@ -30,13 +30,24 @@ public class CollisionAction : MonoBehaviour {
 	void OnControllerColliderHit(ControllerColliderHit hit)
 	{
 
-		if(hit.transform.tag == "coin1" || hit.transform.tag.Equals("coin5") || 
-		   hit.transform.tag == "coin10" || hit.transform.tag.Equals("coin20"))
+		if(hit.transform.tag == "coin1" )
 		{
 			hit.transform.GetComponent<ToolBehavior>().delete();
-			UI.coinAdd(10);
+			UI.coinAdd(1);
 		}
-		else if(hit.transform.tag == "Mushroom")
+		if(hit.transform.tag == "coin5") {
+			hit.transform.GetComponent<ToolBehavior>().delete();
+			UI.coinAdd(5);	
+		}
+		if(hit.transform.tag == "coin10") {
+			hit.transform.GetComponent<ToolBehavior>().delete();
+			UI.coinAdd(10);	
+		}	
+		if(hit.transform.tag == "coin20") {
+			hit.transform.GetComponent<ToolBehavior>().delete();
+			UI.coinAdd(20);	
+		}	
+		if(hit.transform.tag == "Mushroom")
 		{
 			//Scale up the characte
 			hit.transform.GetComponent<ToolBehavior>().delete();
@@ -44,7 +55,7 @@ public class CollisionAction : MonoBehaviour {
 			IMBA = true;
 			UI.startRecordTime();
 		}
-		else if(hit.transform.tag == "Beer")
+		if(hit.transform.tag == "Beer")
 		{
 			GameObject.Find ("MainCamera").GetComponent<UI>().EndOfGame = true;
 		}
