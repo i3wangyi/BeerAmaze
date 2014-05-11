@@ -89,11 +89,11 @@ public class UI : MonoBehaviour {
 				GUILayout.BeginArea(new Rect(300,125,300,1000) );
 				
 				GUILayout.BeginVertical("box");
-//				if(GUILayout.Button ("View Switch"))
-//				{
-////					FPV  = viewSwitch(FPV);
-//				}
-				if(GUILayout.Button ("Exit"))
+				if(GUILayout.Button ("View Switch"))
+				{
+					FPV  = viewSwitch(FPV);
+				}
+				if(GUILayout.Button ("Restart"))
 				{
 					Application.LoadLevel ("Welcome");
 				}
