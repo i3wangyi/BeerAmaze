@@ -15,3 +15,8 @@ EditorBuildSettings:
     path: Assets/maze_0.unity
   - enabled: 1
     path: Assets/maze_1.unity
+<<<<<<< HEAD
+  - enabled: 0
+    path: Assets/MazeSelection.unity
+=======
+>>>>>>> 7585599360acacfc9f131e0547bdc6769266bfdd
