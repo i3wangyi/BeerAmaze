@@ -7,7 +7,8 @@ public class UI : MonoBehaviour {
 	public GameObject player;
 	private static int coinCount;
 	private static float timeCost;
-
+	public GUISkin customSkin;
+	//public GUIStyle myStyle = null;
 	private static float duration = 0;
 	private static bool scale = false;
 	// Use this for initialization
@@ -46,20 +47,21 @@ public class UI : MonoBehaviour {
 	void OnGUI()
 	{
 		//For Mobile Debugging
+		GUI.skin = customSkin;
 		GUI.skin.GetStyle ("Button").fontSize = 45;
 		GUI.skin.GetStyle ("Label").fontSize = 45;			
 		GUI.skin.GetStyle ("TextField").fontSize = 45;
-		GUI.skin.GetStyle ("HorizontalSlider").fixedHeight = 45;
-		GUI.skin.GetStyle ("HorizontalSlider").fixedWidth = 300;
+		GUI.skin.GetStyle ("HorizontalSlider").fixedHeight = 65;
+		GUI.skin.GetStyle ("HorizontalSlider").fixedWidth = 200;
 		GUI.skin.GetStyle("box").fontSize = 45;
 
 		if(isPlayMode)
 		{
-			GUILayout.BeginArea(new Rect(0,0,600,1000) );
+			GUILayout.BeginArea(new Rect(0,0,400,1000) );
 
 				GUILayout.BeginVertical("box");
-				GUILayout.Label("Timer:" + Mathf.CeilToInt(timeCost).ToString());
-				GUILayout.Label("Points:" + coinCount.ToString());
+				GUILayout.Label("Timer : " + Mathf.CeilToInt(timeCost).ToString());
+				GUILayout.Label("Points : " + coinCount.ToString());
 				GUILayout.EndVertical();
 
 			GUILayout.EndArea();
