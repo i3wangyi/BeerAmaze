@@ -30,7 +30,8 @@ public class CollisionAction : MonoBehaviour {
 	void OnControllerColliderHit(ControllerColliderHit hit)
 	{
 
-		if(hit.transform.tag == "Coin")
+		if(hit.transform.tag == "coin1" || hit.transform.tag.Equals("coin5") || 
+		   hit.transform.tag == "coin10" || hit.transform.tag.Equals("coin20"))
 		{
 			hit.transform.GetComponent<ToolBehavior>().delete();
 			UI.coinAdd(10);

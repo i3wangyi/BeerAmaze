@@ -3,11 +3,14 @@
 --- !u!78 &1
 TagManager:
   tags:
-  - Coin
+  - coin5
   - Mushroom
   - Blood
   - Monster
   - Beer
+  - coin10
+  - coin1
+  - coin20
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

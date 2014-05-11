@@ -6,9 +6,16 @@ public class UI : MonoBehaviour {
 	public static bool isPlayMode = true;
 	public bool EndOfGame = false;
 	public static bool isAttacked = false;
+
 	public GameObject player;
+	public Camera ARCamera;
+	public Camera FPVCamera;
+
+	public  bool FPV = true;
 	private static int coinCount;
 	private static float timeCost;
+	private int mainCM;
+	private int fpvCM;
 
 	private static float duration = 0;
 	private static bool scale = false;
@@ -19,6 +26,8 @@ public class UI : MonoBehaviour {
 		coinCount = 0;
 		timeCost = 0;
 		Time.timeScale = 1;
+		fpvCM = FPVCamera.cullingMask;
+		mainCM = ARCamera.cullingMask;
 	}
 
 	public static void coinAdd(int value)
@@ -59,6 +68,7 @@ public class UI : MonoBehaviour {
 		GUI.skin.GetStyle("box").fontSize = 45;
 		GUI.skin.GetStyle ("Label").alignment = TextAnchor.MiddleCenter;
 		GUI.skin.GetStyle ("Button").alignment = TextAnchor.MiddleCenter;
+
 		if(isPlayMode)
 		{
 			GUILayout.BeginArea(new Rect(0,0,300,1000) );
@@ -79,9 +89,10 @@ public class UI : MonoBehaviour {
 				GUILayout.BeginArea(new Rect(300,125,300,1000) );
 				
 				GUILayout.BeginVertical("box");
-				if(GUILayout.Button ("View Switch"))
-				{
-				}
+//				if(GUILayout.Button ("View Switch"))
+//				{
+////					FPV  = viewSwitch(FPV);
+//				}
 				if(GUILayout.Button ("Exit"))
 				{
 					Application.LoadLevel ("Welcome");
@@ -95,7 +106,6 @@ public class UI : MonoBehaviour {
 		if (isAttacked) 
 		{
 			GUILayout.BeginArea(new Rect(650,300,600,1000) );
-			
 			GUILayout.BeginVertical("box");
 			GUILayout.Label("You have been attacked by a monster!!");
 			GUILayout.EndVertical();
@@ -157,7 +167,32 @@ public class UI : MonoBehaviour {
 		scale = true;
 	}
 	
+	public bool viewSwitch(bool v)
+	{
+		//consider camera depth
+		if(v)
+		{
+			ARCamera.depth = 2;
+			FPVCamera.depth = 1;
 
+			FPVCamera.cullingMask = mainCM;
+			ARCamera.cullingMask = fpvCM;
+
+			ARCamera.rect = new Rect(0.69f,0.6f,0.29f,0.36f);
+			FPVCamera.rect = new Rect(0,0,1,1);
+		}
+		else{
+			ARCamera.depth = 1;
+			FPVCamera.depth = 2;
+
+			FPVCamera.cullingMask = fpvCM;
+			ARCamera.cullingMask = mainCM;
+			ARCamera.rect = new Rect(0,0,1,1);
+			FPVCamera.rect = new Rect(0.69f,0.6f,0.29f,0.36f);
+
+		}
+		return !v;
+	}
 
 
 }

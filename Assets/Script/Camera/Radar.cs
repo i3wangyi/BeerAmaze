@@ -21,34 +21,59 @@ public class Radar : MonoBehaviour
 		Rect radarBackgroundRect = new Rect(Screen.width - RADAR_SIZE, 0, RADAR_SIZE, RADAR_SIZE);
 		GUI.DrawTexture(radarBackgroundRect,radarBackground);
 		// find all 'cube' tagged objects
-		GameObject[] CoinArray = GameObject.FindGameObjectsWithTag("Coin");
+
+		GameObject[] Coin5Array = GameObject.FindGameObjectsWithTag("coin5");
+		GameObject[] Coin1Array = GameObject.FindGameObjectsWithTag("coin1");
+		GameObject[] Coin10Array = GameObject.FindGameObjectsWithTag("coin10");
+		GameObject[] Coin20Array = GameObject.FindGameObjectsWithTag("coin20");
 		GameObject[] BeerArray = GameObject.FindGameObjectsWithTag("Beer");
 		GameObject[] MonsterArray = GameObject.FindGameObjectsWithTag("Monster");
 		GameObject[] MushroomArray = GameObject.FindGameObjectsWithTag("Mushroom");
 
-
 		// draw blips for all within distance
 		Vector3 playerPos = playerController.position;
-		foreach (GameObject cubeGO in CoinArray)  
+		foreach (GameObject cubeGO in Coin1Array)  
 		{
 			Vector3 targetPos = cubeGO.transform.position;
 			float distanceToTarget = Vector3.Distance(targetPos,playerPos);
 			if( (distanceToTarget <= MAX_DISTANCE) )
 				DrawBlip(playerPos, targetPos, distanceToTarget, CoinBlip);
 		}
+		foreach (GameObject cubeGO in Coin5Array)  
+		{
+			Vector3 targetPos = cubeGO.transform.position;
+			float distanceToTarget = Vector3.Distance(targetPos,playerPos);
+			if( (distanceToTarget <= MAX_DISTANCE) )
+				DrawBlip(playerPos, targetPos, distanceToTarget, CoinBlip);
+		}
+		foreach (GameObject cubeGO in Coin10Array)  
+		{
+			Vector3 targetPos = cubeGO.transform.position;
+			float distanceToTarget = Vector3.Distance(targetPos,playerPos);
+			if( (distanceToTarget <= MAX_DISTANCE) )
+				DrawBlip(playerPos, targetPos, distanceToTarget, CoinBlip);
+		}
+		foreach (GameObject cubeGO in Coin20Array)  
+		{
+			Vector3 targetPos = cubeGO.transform.position;
+			float distanceToTarget = Vector3.Distance(targetPos,playerPos);
+			if( (distanceToTarget <= MAX_DISTANCE) )
+				DrawBlip(playerPos, targetPos, distanceToTarget, CoinBlip);
+		}
+
 		foreach (GameObject cubeGO in BeerArray)  
 		{
 			Vector3 targetPos = cubeGO.transform.position;
 			float distanceToTarget = Vector3.Distance(targetPos,playerPos);
 			if( (distanceToTarget <= MAX_DISTANCE) )
-				DrawBlip(playerPos, targetPos, distanceToTarget, MonsterBlip);
+				DrawBlip(playerPos, targetPos, distanceToTarget, MushroomBlip);
 		}
 		foreach (GameObject cubeGO in MonsterArray)  
 		{
 			Vector3 targetPos = cubeGO.transform.position;
 			float distanceToTarget = Vector3.Distance(targetPos,playerPos);
 			if( (distanceToTarget <= MAX_DISTANCE) )
-				DrawBlip(playerPos, targetPos, distanceToTarget, MushroomBlip);
+				DrawBlip(playerPos, targetPos, distanceToTarget, MonsterBlip);
 		}
 		foreach (GameObject cubeGO in MushroomArray)  
 		{

@@ -80,6 +80,8 @@ public class JoyStick : TouchLogic
 			moveDirection  =  new Vector3(joyDelta.x,0, joyDelta.z);
 
 			Angle = Mathf.Atan2(joyDelta.x,joyDelta.z) * Mathf.Rad2Deg;
+
+			float deltaY = Angle - 270 - player.eulerAngles.y;
 			player.eulerAngles = new Vector3(player.eulerAngles.x, Angle, player.eulerAngles.z);
 
 			moveDirection = transform.TransformDirection(moveDirection);
@@ -94,14 +96,8 @@ public class JoyStick : TouchLogic
 //			pitch = Mathf.Clamp(pitch, -80, 80);
 			//do the rotations of our camera 
 			moveDirection  =  new Vector3(joyDelta.x,0, joyDelta.z);
-			
 			Angle = Mathf.Atan2(joyDelta.x,joyDelta.z) * Mathf.Rad2Deg;
-
 			player.eulerAngles = new Vector3 (player.eulerAngles.x, Angle, player.eulerAngles.z);
-
-			break;
-		case JoystickType.SkyColor:
-			Camera.mainCamera.backgroundColor = new Color(joyDelta.x, joyDelta.z, joyDelta.x*joyDelta.z);
 			break;
 		}
 	}
