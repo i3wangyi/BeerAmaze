@@ -76,6 +76,7 @@ public class MazeSelection : MonoBehaviour {
 				if(Mathf.Abs(endPos.y - startPos.y) > 100)
 				{
 					Application.LoadLevel ("maze_" + it);
+					continue;
 				}
 				if(endPos.x - startPos.x > 0)
 				{
