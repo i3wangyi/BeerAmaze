@@ -7,6 +7,7 @@ public class StartMenuScript : MonoBehaviour
 	public  bool HelpSelected = false;
 	public  bool AboutUsSelected = false;
 	public Texture backgroundTexture;
+	public GUISkin customSkin;
 	// Use this for initialization
 	void Start () 
 	{
@@ -19,11 +20,12 @@ public class StartMenuScript : MonoBehaviour
 	
 	}
 
-	void OnGUI()
-	{
+	void OnGUI() {
+		GUI.skin = customSkin;
 		if (startMenu)
 		{
 			//For Mobile Debugging
+
 			GUI.skin.GetStyle ("Button").fontSize = 45;	
 			GUI.skin.GetStyle ("TextField").fontSize = 45;	
 			GUI.skin.GetStyle ("box").fontSize = 45;
@@ -42,7 +44,7 @@ public class StartMenuScript : MonoBehaviour
 							HelpSelected = true;
 					}
 					//Help
-					if (GUILayout.Button ("AboutUs")) {
+					if (GUILayout.Button ("About Us")) {
 						AboutUsSelected = true;
 					}
 

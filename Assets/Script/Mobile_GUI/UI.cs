@@ -17,6 +17,8 @@ public class UI : MonoBehaviour {
 	private int mainCM;
 	private int fpvCM;
 
+	public GUISkin customSkin;
+	//public GUIStyle myStyle = null;
 	private static float duration = 0;
 	private static bool scale = false;
 
@@ -60,11 +62,12 @@ public class UI : MonoBehaviour {
 	void OnGUI()
 	{
 		//For Mobile Debugging
+		GUI.skin = customSkin;
 		GUI.skin.GetStyle ("Button").fontSize = 45;
 		GUI.skin.GetStyle ("Label").fontSize = 45;			
 		GUI.skin.GetStyle ("TextField").fontSize = 45;
-		GUI.skin.GetStyle ("HorizontalSlider").fixedHeight = 45;
-		GUI.skin.GetStyle ("HorizontalSlider").fixedWidth = 300;
+		GUI.skin.GetStyle ("HorizontalSlider").fixedHeight = 65;
+		GUI.skin.GetStyle ("HorizontalSlider").fixedWidth = 200;
 		GUI.skin.GetStyle("box").fontSize = 45;
 		GUI.skin.GetStyle ("Label").alignment = TextAnchor.MiddleCenter;
 		GUI.skin.GetStyle ("Button").alignment = TextAnchor.MiddleCenter;
@@ -84,6 +87,7 @@ public class UI : MonoBehaviour {
 				GUILayout.EndVertical();
 
 			GUILayout.EndArea();
+
 			if(n == 1)
 			{
 				GUILayout.BeginArea(new Rect(300,125,300,1000) );
@@ -97,6 +101,7 @@ public class UI : MonoBehaviour {
 				{
 					Application.LoadLevel ("Welcome");
 				}
+
 				GUILayout.EndVertical();
 				
 				GUILayout.EndArea();
