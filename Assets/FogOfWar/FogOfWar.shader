@@ -2,7 +2,7 @@
 	Properties {
 		_Color("Main Color", Color) = (1,1,1,1)
 		_MainTex ("Base (RGB) Trans(A)", 2D) = "white" {}
-		_FogRadius ("FogRadius", float) = 80
+		_FogRadius ("FogRadius", float) = 100
 		_FogMaxRadius("FogMaxRadius", float) = 1
 		_Player_Pos ("_Player_Pos", Vector) = (0,0,0,1)
 		_Player_Ori ("_Player_Ori", Vector) = (0,0,1,1)

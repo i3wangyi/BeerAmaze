@@ -14157,6 +14157,7 @@ MonoBehaviour:
   ARCamera: {fileID: 1412184271}
   FPVCamera: {fileID: 219375657}
   FPV: 1
+  customSkin: {fileID: 0}
 --- !u!114 &1412184274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18464,7 +18465,7 @@ Renderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1833197097}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_LightmapIndex: 255

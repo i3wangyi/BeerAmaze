@@ -51,7 +51,7 @@ public class CollisionAction : MonoBehaviour {
 		{
 			//Scale up the characte
 			hit.transform.GetComponent<ToolBehavior>().delete();
-			this.transform.localScale = this.transform.localScale * (1.0f + 0.5f);
+			this.transform.localScale = this.transform.localScale * (1.0f + 0.3f);
 			IMBA = true;
 			UI.startRecordTime();
 		}
