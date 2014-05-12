@@ -19,8 +19,8 @@ Android/Android 4.4/Google Nexus 7 Tablet
 ##Project title
 BeerMaze
    
-
 ##Project directory
+
 
 ##Location of Video
 https://www.youtube.com/user/a3090102735
