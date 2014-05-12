@@ -50,7 +50,7 @@ public class MazeSelection : MonoBehaviour {
 		GUI.skin.GetStyle ("Label").alignment = TextAnchor.MiddleCenter;
 		GUILayout.BeginArea (new Rect (Screen.width/2 - 300, Screen.height/2 - 500, 600, 1000));
 		GUILayout.BeginVertical ("box");
-		GUILayout.Label (countDown.ToString ());
+		GUILayout.Label (((int)countDown).ToString ());
 		GUILayout.EndVertical ();
 		GUILayout.EndArea ();
 
@@ -73,6 +73,10 @@ public class MazeSelection : MonoBehaviour {
 			if(Input.GetTouch(i).phase == TouchPhase.Ended)
 			{
 				endPos = Input.GetTouch(i).position;
+				if(Mathf.Abs(endPos.y - startPos.y) > 100)
+				{
+					Application.LoadLevel ("maze_" + it);
+				}
 				if(endPos.x - startPos.x > 0)
 				{
 					objArray[it].SetActive(false);
@@ -91,10 +95,6 @@ public class MazeSelection : MonoBehaviour {
 					objArray[it].SetActive(true);
 					currentObj = objArray[it];
 					currentObj.transform.eulerAngles = startOri[it];
-				}
-				if(Mathf.Abs(endPos.y - startPos.y) > 100)
-				{
-					Application.LoadLevel ("maze_" + it);
 				}
 			}
 		}
