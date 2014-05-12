@@ -57,7 +57,7 @@ public class StartMenuScript : MonoBehaviour
 			}
 			if(AboutUsSelected)
 			{
-				GUILayout.TextField ("Welcome to OurMazeGame!!");
+				GUILayout.TextField ("Welcome to OurMazeGame!! Our members are Wen-Ping Chi, Yi Wang, Shuai Lu, Margaret Elizabeth Kinetz!");
 				if (GUILayout.Button ("Close")) {
 					AboutUsSelected = false;
 				}
