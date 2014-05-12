@@ -1,17 +1,26 @@
 BeerAmaze
 =========
 
+##Team name and number
+Team A (Group 4)
 
+##Names and UNIs 
+WEN-PING CHI (wc2474), Yi Wang (yw2580), Lu Shuai (sl3635), Margaret Elizabeth Kinetz (mek2190)
 
+##Date of submission
+2014/05/11
 
+##Development platform(s)
+Windows 8.1 64bit
 
+##Mobile platforms, OS versions, and device names 
+Android/Android 4.4/Google Nexus 7 Tablet
 
-
-
-
-
-
+##Project title
+BeerMaze
+   
 ##Project directory
+
 
 ##Location of Video
 https://www.youtube.com/user/a3090102735
@@ -30,6 +39,12 @@ Move direction is based on third person view, when switching to first person vie
 
 
 ## Asset sources
-	From Unity Asset stores
+1. Max Adventure Model(for our player)
+   Publisher:Andres Olivella
+   (https://www.assetstore.unity3d.com/#/content/3012)
+       
+2. Hedgehog, Tiny Monster(for our Monster)
+   Publisher:Bunt Games
+   (https://www.assetstore.unity3d.com/#/content/17401)
 
-
+3. Coins, Mushroom, Beer, and Mazes are self-made by 3dsMax
