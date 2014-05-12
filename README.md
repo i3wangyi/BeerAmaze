@@ -21,6 +21,31 @@ BeerMaze
    
 ##Project directory
 
+script/
+├── Camera
+│   ├── CameraFrame.cs
+│   ├── CameraSmoothFollow.cs
+│   ├── Radar.cs
+├── Characters
+│   ├── CollisionAction.cs
+│   ├── JoyStick.cs
+│   ├── ObjectBehavior.cs
+│   ├── ReturnPosition.cs
+│   ├── TouchLogic.cs
+│   ├── TouchManager.cs
+├── Characters.meta
+├── InfoShow.cs
+├── MazeSelection.cs
+├── Mobile_GUI
+│   ├── UI.cs
+├── Mobile_GUI.meta
+├── Object
+│   ├── MonsterBehavior1.cs
+│   ├── MonsterBehavior2.cs
+│   ├── MonsterBehavior3.cs
+│   ├── MonstrerBehavior.cs
+│   ├── ToolBehavior.cs
+├── StartMenuScript.cs
 
 ##Location of Video
 https://www.youtube.com/user/a3090102735
