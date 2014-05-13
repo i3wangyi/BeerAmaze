@@ -2738,7 +2738,7 @@ Transform:
   m_GameObject: {fileID: 303225605}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: .00142951275, y: .00951273274, z: 1.47151941e-05}
-  m_LocalScale: {x: .0286632571, y: .0286632571, z: .0286632571}
+  m_LocalScale: {x: .0499752574, y: .0499752574, z: .0499752574}
   m_Children:
   - {fileID: 1208808827}
   - {fileID: 399128740}
@@ -13021,7 +13021,7 @@ MonoBehaviour:
   ARCamera: {fileID: 1412184271}
   FPVCamera: {fileID: 219375657}
   FPV: 1
-  customSkin: {fileID: 11400000, guid: b01ce84ad5d995e46a691fdc60c562fb, type: 2}
+  customSkin: {fileID: 0}
 --- !u!114 &1412184274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15333,15 +15333,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400022, guid: 0d6446b00d81a9641a2eca08eb97949f, type: 3}
       propertyPath: m_LocalScale.x
-      value: .0286632571
+      value: .0499752574
       objectReference: {fileID: 0}
     - target: {fileID: 400022, guid: 0d6446b00d81a9641a2eca08eb97949f, type: 3}
       propertyPath: m_LocalScale.y
-      value: .0286632571
+      value: .0499752574
       objectReference: {fileID: 0}
     - target: {fileID: 400022, guid: 0d6446b00d81a9641a2eca08eb97949f, type: 3}
       propertyPath: m_LocalScale.z
-      value: .0286632571
+      value: .0499752574
       objectReference: {fileID: 0}
     - target: {fileID: 100022, guid: 0d6446b00d81a9641a2eca08eb97949f, type: 3}
       propertyPath: m_Name

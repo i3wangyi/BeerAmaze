@@ -88,7 +88,7 @@ public class JoyStick : TouchLogic
 			Vector3 originDirectin = transform.TransformDirection(new Vector3(characterPos.position.x, 0, characterPos.position.z));
 			moveDirection = transform.TransformDirection(moveDirection);
 //			characterTrasform.position = new Vector3(characterTrasform.position.x + joyDelta.x, characterTrasform.position.y,characterTrasform.position.z+joyDelta.z);
-			troller.Move(moveDirection);
+			troller.Move(moveDirection*5);
 			Character.gameObject.animation.Play("walk", PlayMode.StopAll);
 			break;
 		case JoystickType.LookRotation:

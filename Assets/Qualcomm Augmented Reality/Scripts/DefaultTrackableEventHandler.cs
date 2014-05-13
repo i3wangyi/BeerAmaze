@@ -71,11 +71,11 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
         Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
 		Transform[] AllChildren = gameObject.GetComponentsInChildren<Transform>();
 
-		foreach(Transform t in AllChildren)
-		{
-			t.gameObject.renderer.enabled = true;
-			t.gameObject.SetActive(true);	
-		}
+//		foreach(Transform t in AllChildren)
+//		{
+//			t.gameObject.renderer.enabled = true;
+//			t.gameObject.SetActive(true);	
+//		}
         // Enable rendering:
         foreach (Renderer component in rendererComponents)
         {
@@ -99,11 +99,11 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
         Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
         Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
 
-		foreach(Transform t in AllChildren)
-		{
-			t.gameObject.renderer.enabled = false;
-			t.gameObject.SetActive(false);	
-		}
+//		foreach(Transform t in AllChildren)
+//		{
+//			t.gameObject.renderer.enabled = false;
+//			t.gameObject.SetActive(false);	
+//		}
 
         // Disable rendering:
         foreach (Renderer component in rendererComponents)
