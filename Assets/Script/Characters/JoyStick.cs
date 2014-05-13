@@ -84,8 +84,11 @@ public class JoyStick : TouchLogic
 			float deltaY = Angle - 270 - player.eulerAngles.y;
 			player.eulerAngles = new Vector3(player.eulerAngles.x, Angle, player.eulerAngles.z);
 
+			Transform characterPos = troller.transform;
+			Vector3 originDirectin = transform.TransformDirection(new Vector3(characterPos.position.x, 0, characterPos.position.z));
 			moveDirection = transform.TransformDirection(moveDirection);
-			troller.Move(moveDirection*5);
+//			characterTrasform.position = new Vector3(characterTrasform.position.x + joyDelta.x, characterTrasform.position.y,characterTrasform.position.z+joyDelta.z);
+			troller.Move(moveDirection);
 			Character.gameObject.animation.Play("walk", PlayMode.StopAll);
 			break;
 		case JoystickType.LookRotation:

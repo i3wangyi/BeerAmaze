@@ -56,7 +56,6 @@ public class UI : MonoBehaviour {
 				scale = false;
 			}
 		}
-
 	}
 
 	void OnGUI()
@@ -96,6 +95,10 @@ public class UI : MonoBehaviour {
 				if(GUILayout.Button ("View Switch"))
 				{
 					FPV  = viewSwitch(FPV);
+				}
+				if(GUILayout.Button("FOG"))
+				{
+					FogOption.fogoff=!FogOption.fogoff;
 				}
 				if(GUILayout.Button ("Restart"))
 				{

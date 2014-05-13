@@ -7,6 +7,9 @@ public class CollisionAction : MonoBehaviour {
 	private Vector3 originPos;
 	private Vector3 originOri;
 	private bool IMBA = false;
+
+
+
 	// Use this for initialization
 	void Start () {
 		originScale = this.transform.localScale;
