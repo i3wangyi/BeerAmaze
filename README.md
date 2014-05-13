@@ -48,7 +48,7 @@ script/
 ├── StartMenuScript.cs
 
 ##Location of Video
-![http://img.youtube.com/vi/fsbnJo9RVcw/0.jpg](https://www.youtube.com/watch?v=fsbnJo9RVcw&feature=youtu.be)
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/fsbnJo9RVcw/0.jpg)](https://www.youtube.com/watch?v=fsbnJo9RVcw)
 
 ## How to run
 	Open any of *.unity under Assets folder.
