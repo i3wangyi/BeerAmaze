@@ -106,7 +106,7 @@ MonoBehaviour:
   HelpSelected: 0
   AboutUsSelected: 0
   backgroundTexture: {fileID: 2800000, guid: c40ff048ca868408fad977d1e828df29, type: 3}
-  customSkin: {fileID: 0}
+  customSkin: {fileID: 11400000, guid: b01ce84ad5d995e46a691fdc60c562fb, type: 2}
 --- !u!114 &364081141
 MonoBehaviour:
   m_ObjectHideFlags: 0
