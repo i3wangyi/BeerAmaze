@@ -92,6 +92,7 @@ public class CollisionAction : MonoBehaviour {
 	
 	public void resetScale()
 	{
+		PlaySound(3);
 		this.transform.localScale = originScale;
 		IMBA = false;
 	}
