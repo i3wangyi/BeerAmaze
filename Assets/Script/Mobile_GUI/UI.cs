@@ -11,7 +11,7 @@ public class UI : MonoBehaviour {
 	public Camera ARCamera;
 	public Camera FPVCamera;
 
-	public  bool FPV = true;
+
 	private static int coinCount;
 	private static float timeCost;
 	private int mainCM;
@@ -22,7 +22,7 @@ public class UI : MonoBehaviour {
 	//public GUIStyle myStyle = null;
 	private static float duration = 0;
 	private static bool scale = false;
-
+	private  bool FPV = false;
 	private int n = 0; 
 	public AudioClip[] audioClip;
 	
@@ -37,6 +37,7 @@ public class UI : MonoBehaviour {
 		timeCost = 0;
 		Time.timeScale = 1;
 		fpvCM = FPVCamera.cullingMask;
+		FPV = false;
 		mainCM = ARCamera.cullingMask;
 	}
 
@@ -88,9 +89,9 @@ public class UI : MonoBehaviour {
 				GUILayout.Label("Points:" + coinCount.ToString());
 				if(GUILayout.Button("Setting"))
 				{
-				PlaySound(0);
-				if(n == 0) n = 1;
-				else n = 0;
+					PlaySound(0);
+					if(n == 0) n = 1;
+					else n = 0;
 				}
 				GUILayout.EndVertical();
 
@@ -104,10 +105,11 @@ public class UI : MonoBehaviour {
 				if(GUILayout.Button ("View Switch"))
 				{
 					PlaySound(0);
-					FPV  = viewSwitch(FPV);
+					FPV = viewSwitch(FPV);
+					Debug.Log ("FPV:" + FPV);
 					JoyStick.SwitchView();
 				}
-				if(FPV)
+				if(!FPV)
 				{
 					if(GUILayout.Button("Fog"))
 					{
@@ -118,16 +120,16 @@ public class UI : MonoBehaviour {
 				if(GUILayout.Button("Assist View"))
 				{
 					PlaySound(0);
-					if(!FPV)
+					if(FPV)
 					{
-						GameObject.Find("MainCamera").camera.enabled = AssistCamera;
-						AssistCamera = !AssistCamera;
+						GameObject.Find("MainCamera").camera.enabled = !GameObject.Find("MainCamera").camera.enabled;
+						GameObject.Find("FPV_Camera").camera.enabled = true;
 					}
 					else{
-						GameObject.Find("FPV_Camera").camera.enabled = AssistCamera;
-						AssistCamera = !AssistCamera;
+						GameObject.Find("FPV_Camera").camera.enabled = !GameObject.Find("FPV_Camera").camera.enabled;
+						GameObject.Find("MainCamera").camera.enabled = true; 
 					}
-				
+					CameraFrame.visible = !CameraFrame.visible;	
 				}
 				if(GUILayout.Button ("Restart"))
 				{
@@ -170,7 +172,7 @@ public class UI : MonoBehaviour {
 			}
 			GUILayout.EndVertical();
 			GUILayout.EndArea();
-			Time.timeScale = 0;
+//			Time.timeScale = 0;
 		}
 	}
 
@@ -209,8 +211,9 @@ public class UI : MonoBehaviour {
 	
 	public bool viewSwitch(bool v)
 	{
+		Debug.Log ("v:" + v);
 		//consider camera depth
-		if(v)
+		if(!v)
 		{
 			ARCamera.depth = 2;
 			FPVCamera.depth = 1;
@@ -218,7 +221,7 @@ public class UI : MonoBehaviour {
 			FPVCamera.cullingMask = mainCM;
 			ARCamera.cullingMask = fpvCM;
 
-			ARCamera.rect = new Rect(0.69f,0.6f,0.33f,0.36f);
+			ARCamera.rect = new Rect(0.68f,0.62f,0.32f,0.37f);
 			FPVCamera.rect = new Rect(0,0,1,1);
 		}
 		else{
@@ -228,7 +231,7 @@ public class UI : MonoBehaviour {
 			FPVCamera.cullingMask = fpvCM;
 			ARCamera.cullingMask = mainCM;
 			ARCamera.rect = new Rect(0,0,1,1);
-			FPVCamera.rect = new Rect(0.69f,0.6f,0.33f,0.36f);
+			FPVCamera.rect = new Rect(0.68f,0.62f,0.32f,0.37f);
 
 		}
 		return !v;

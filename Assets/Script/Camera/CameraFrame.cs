@@ -5,6 +5,7 @@ public class CameraFrame : MonoBehaviour {
 
 	public Texture2D textureImage;
 	public int frame_depth = 2;
+	public static bool visible = true;
 
 	// Use this for initialization
 	void Start () 
@@ -20,10 +21,10 @@ public class CameraFrame : MonoBehaviour {
 
 	void OnGUI()
 	{
-		if(UI.isPlayMode && !UI.AssistCamera)
+		if(UI.isPlayMode && visible )
 		{
 			GUI.depth = frame_depth;
-			GUI.DrawTexture (new Rect (0.68f * Screen.width, 0.02f * Screen.height, 0.35f * Screen.width, 0.4f * Screen.height), textureImage);
+			GUI.DrawTexture (new Rect (0.68f * Screen.width, 0, 0.35f * Screen.width, 0.4f * Screen.height), textureImage);
 		}
 	}
 }

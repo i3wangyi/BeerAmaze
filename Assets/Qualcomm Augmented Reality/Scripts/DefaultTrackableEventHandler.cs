@@ -73,7 +73,6 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
     {
         Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
         Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
-		Transform[] AllChildren = gameObject.GetComponentsInChildren<Transform>();
 
 //		foreach(Transform t in AllChildren)
 //		{
@@ -105,7 +104,6 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
 
     private void OnTrackingLost()
     {
-		Transform[] AllChildren = gameObject.GetComponentsInChildren<Transform>();
         Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
         Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
 
@@ -129,9 +127,12 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
 
 		UI.resetPlayMode();
 		Radar.isEnableRadar = false;
-		joyMove.SetActive(false);
-		joyRotate.SetActive(false);
-		FPV_camera.camera.enabled = false;
+		if(joyMove != null )
+			joyMove.SetActive(false);
+		if(joyRotate!=null)
+			joyRotate.SetActive(false);
+		if(FPV_camera!=null)
+			FPV_camera.camera.enabled = false;
 
         Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
     }
