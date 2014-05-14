@@ -95,6 +95,7 @@ public class UI : MonoBehaviour {
 				if(GUILayout.Button ("View Switch"))
 				{
 					FPV  = viewSwitch(FPV);
+					JoyStick.SwitchView();
 				}
 				if(GUILayout.Button("FOG"))
 				{

@@ -15,6 +15,14 @@ public class MazeSelection : MonoBehaviour {
 	private bool setTimer;
 	private int mazeNum;
 
+	public AudioClip[] audioClip;
+	
+	void PlaySound(int clip)
+	{
+		audio.clip = audioClip [clip];
+		audio.Play ();
+	}
+
 	public Texture backTex;
 	// Use this for initialization
 	void Start () {
@@ -75,11 +83,13 @@ public class MazeSelection : MonoBehaviour {
 				endPos = Input.GetTouch(i).position;
 				if(Mathf.Abs(endPos.y - startPos.y) > 100)
 				{
+					PlaySound(0);
 					Application.LoadLevel ("maze_" + it);
 					continue;
 				}
 				if(endPos.x - startPos.x > 0)
 				{
+					PlaySound(0);
 					objArray[it].SetActive(false);
 					it = (it + 1) % mazeNum ;
 					objArray[it].SetActive(true);
@@ -88,6 +98,7 @@ public class MazeSelection : MonoBehaviour {
 				}
 				if(endPos.x - startPos.x < 0)
 				{
+					PlaySound(0);
 					objArray[it].SetActive(false);
 					if(it == 0)
 						it = mazeNum - 1;

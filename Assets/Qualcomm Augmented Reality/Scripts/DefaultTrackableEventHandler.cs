@@ -66,7 +66,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
 
     private void OnTrackingFound()
     {
-		GameObject.Find ("Ground").SetActive (true);
+		GameObject.Find ("Ground").transform.renderer.enabled = true;
 		this.transform.GetComponent<MazeSelection> ().SetTimer1 ();
         Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
         Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
@@ -77,6 +77,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
 //			t.gameObject.renderer.enabled = true;
 //			t.gameObject.SetActive(true);	
 //		}
+
         // Enable rendering:
         foreach (Renderer component in rendererComponents)
         {
@@ -95,7 +96,6 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
 
     private void OnTrackingLost()
     {
-		this.transform.GetComponent<MazeSelection> ().SetTimer2 ();
 		Transform[] AllChildren = gameObject.GetComponentsInChildren<Transform>();
         Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
         Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
@@ -105,7 +105,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
 //			t.gameObject.renderer.enabled = false;
 //			t.gameObject.SetActive(false);	
 //		}
-		GameObject.Find ("Ground").SetActive (false);
+		GameObject.Find ("Ground").transform.renderer.enabled = false;
         // Disable rendering:
         foreach (Renderer component in rendererComponents)
         {

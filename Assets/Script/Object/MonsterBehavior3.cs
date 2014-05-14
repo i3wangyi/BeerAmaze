@@ -74,12 +74,13 @@ public class MonsterBehavior3 : MonoBehaviour
 		{
 			if(col.GetComponent<CollisionAction>().isIMBA())
 			{
-				PlaySound(0);
-				setDeath();
+				PlaySound(1);
+				//setDeath();
+				Invoke("setDeath", 1);
 			}
 			else
 			{
-				PlaySound(1);
+				PlaySound(0);
 				col.GetComponent<CollisionAction>().reset();
 				UI.isAttacked = true;
 				Invoke("ToggleLabel", 2);
