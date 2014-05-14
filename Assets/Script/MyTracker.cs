@@ -66,7 +66,8 @@ ITrackableEventHandler
 	
 	private void OnTrackingFound()
 	{
-		this.transform.GetComponent<MazeSelection> ().SetTimer1 ();
+		MazeSelection.setTimer = true;
+
 		Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
 		Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
 		Transform[] AllChildren = gameObject.GetComponentsInChildren<Transform>();
@@ -95,7 +96,8 @@ ITrackableEventHandler
 	
 	private void OnTrackingLost()
 	{
-		this.transform.GetComponent<MazeSelection> ().SetTimer2 ();
+		MazeSelection.setTimer = false;
+
 		Transform[] AllChildren = gameObject.GetComponentsInChildren<Transform>();
 		Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
 		Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);

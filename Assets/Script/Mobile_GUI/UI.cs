@@ -107,7 +107,7 @@ public class UI : MonoBehaviour {
 					FPV  = viewSwitch(FPV);
 					JoyStick.SwitchView();
 				}
-				if(!FPV)
+				if(FPV)
 				{
 					if(GUILayout.Button("Fog"))
 					{
@@ -118,8 +118,16 @@ public class UI : MonoBehaviour {
 				if(GUILayout.Button("Assist View"))
 				{
 					PlaySound(0);
-					GameObject.Find("FPV_Camera").camera.enabled = AssistCamera;
-					AssistCamera = !AssistCamera;
+					if(!FPV)
+					{
+						GameObject.Find("MainCamera").camera.enabled = AssistCamera;
+						AssistCamera = !AssistCamera;
+					}
+					else{
+						GameObject.Find("FPV_Camera").camera.enabled = AssistCamera;
+						AssistCamera = !AssistCamera;
+					}
+				
 				}
 				if(GUILayout.Button ("Restart"))
 				{
@@ -210,7 +218,7 @@ public class UI : MonoBehaviour {
 			FPVCamera.cullingMask = mainCM;
 			ARCamera.cullingMask = fpvCM;
 
-			ARCamera.rect = new Rect(0.69f,0.6f,0.29f,0.36f);
+			ARCamera.rect = new Rect(0.69f,0.6f,0.33f,0.36f);
 			FPVCamera.rect = new Rect(0,0,1,1);
 		}
 		else{
@@ -220,7 +228,7 @@ public class UI : MonoBehaviour {
 			FPVCamera.cullingMask = fpvCM;
 			ARCamera.cullingMask = mainCM;
 			ARCamera.rect = new Rect(0,0,1,1);
-			FPVCamera.rect = new Rect(0.69f,0.6f,0.29f,0.36f);
+			FPVCamera.rect = new Rect(0.69f,0.6f,0.33f,0.36f);
 
 		}
 		return !v;

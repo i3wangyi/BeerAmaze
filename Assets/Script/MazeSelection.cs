@@ -12,7 +12,7 @@ public class MazeSelection : MonoBehaviour {
 	private Vector2 endPos;
 	private GameObject currentObj;
 	private float countDown;
-	private bool setTimer;
+	public static bool setTimer;
 	private int mazeNum;
 
 	public AudioClip[] audioClip;
@@ -40,16 +40,8 @@ public class MazeSelection : MonoBehaviour {
 		currentObj = objArray [0];
 		countDown = 10.0f;
 		setTimer = false;
+	}
 
-	}
-	public void SetTimer1()
-	{
-		setTimer = true;
-	}
-	public void SetTimer2()
-	{
-		setTimer = false;
-	}
 	// Update is called once per frame
 	void OnGUI(){
 		GUI.backgroundColor = Color.clear;
@@ -84,6 +76,7 @@ public class MazeSelection : MonoBehaviour {
 				if(Mathf.Abs(endPos.y - startPos.y) > 100)
 				{
 					PlaySound(0);
+					setTimer = false;
 					Application.LoadLevel ("maze_" + it);
 					continue;
 				}
