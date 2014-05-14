@@ -5,7 +5,13 @@ public class MonsterBehavior2 : MonoBehaviour
 {
 	private string direction = "left";
 	private bool isDeath = false;
-	
+
+	public AudioClip[] audioClip;
+	void PlaySound(int clip)
+	{
+		audio.clip = audioClip [clip];
+		audio.Play ();
+	}
 	// Use this for initialization
 	void Start ()
 	{
@@ -52,10 +58,12 @@ public class MonsterBehavior2 : MonoBehaviour
 		{
 			if(col.GetComponent<CollisionAction>().isIMBA())
 			{
+				PlaySound (0);
 				setDeath();
 			}
 			else
 			{
+				PlaySound (1);
 				col.GetComponent<CollisionAction>().reset();
 				UI.isAttacked = true;
 				Invoke("ToggleLabel", 2);

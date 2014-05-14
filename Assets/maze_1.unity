@@ -5014,6 +5014,7 @@ GameObject:
   - 111: {fileID: 303225612}
   - 143: {fileID: 303225608}
   - 114: {fileID: 303225607}
+  - 82: {fileID: 303225609}
   m_Layer: 0
   m_Name: MAX
   m_TagString: Player
@@ -5047,6 +5048,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3baf5e1beaf4844709836d55c28d1337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioClip:
+  - {fileID: 8300000, guid: 9f8d6780d458a724497b378a6d47d515, type: 3}
+  - {fileID: 8300000, guid: a79abbf02d29c6d498965ef712692c60, type: 3}
+  - {fileID: 8300000, guid: 59f7426fc1228464e8033a8751b6da21, type: 3}
 --- !u!143 &303225608
 CharacterController:
   m_ObjectHideFlags: 0
@@ -5061,6 +5066,64 @@ CharacterController:
   m_SkinWidth: .0500000007
   m_MinMoveDistance: 0
   m_Center: {x: .0399999991, y: .980000019, z: 0}
+--- !u!82 &303225609
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 303225605}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!111 &303225612
 Animation:
   m_ObjectHideFlags: 0
@@ -8482,6 +8545,7 @@ GameObject:
   - 114: {fileID: 515033414}
   - 54: {fileID: 515033412}
   - 114: {fileID: 515033413}
+  - 82: {fileID: 515033416}
   m_Layer: 0
   m_Name: bigcrush
   m_TagString: Monster
@@ -8527,6 +8591,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a84bde2b2f7af845968a7cf30442c54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioClip:
+  - {fileID: 8300000, guid: 291695ff46c2bf440a5196f0be668651, type: 3}
+  - {fileID: 8300000, guid: b98483f8e1364c04fbb591fbc1311e93, type: 3}
 --- !u!114 &515033414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8550,6 +8617,64 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: .100000001, y: .100000001, z: .150000006}
   m_Center: {x: 0, y: .0299999993, z: 0}
+--- !u!82 &515033416
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 515033410}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &515110590
 GameObject:
   m_ObjectHideFlags: 0
@@ -13888,6 +14013,7 @@ GameObject:
   - 114: {fileID: 831616010}
   - 54: {fileID: 831616008}
   - 114: {fileID: 831616009}
+  - 82: {fileID: 831616012}
   m_Layer: 0
   m_Name: bigcrush
   m_TagString: Monster
@@ -13933,6 +14059,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e7b16d72517ee41bfdb8495b188dcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioClip:
+  - {fileID: 8300000, guid: 291695ff46c2bf440a5196f0be668651, type: 3}
+  - {fileID: 8300000, guid: b98483f8e1364c04fbb591fbc1311e93, type: 3}
 --- !u!114 &831616010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13956,6 +14085,64 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: .100000001, y: .100000001, z: .150000006}
   m_Center: {x: 0, y: .0299999993, z: 0}
+--- !u!82 &831616012
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 831616006}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &833390635
 GameObject:
   m_ObjectHideFlags: 0
@@ -19198,6 +19385,7 @@ GameObject:
   - 114: {fileID: 1141703937}
   - 114: {fileID: 1141703935}
   - 54: {fileID: 1141703938}
+  - 82: {fileID: 1141703939}
   m_Layer: 0
   m_Name: bigcrush
   m_TagString: Monster
@@ -19228,6 +19416,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e64ac2b1bf4285744861f3f96aa39ad5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioClip:
+  - {fileID: 8300000, guid: 291695ff46c2bf440a5196f0be668651, type: 3}
+  - {fileID: 8300000, guid: b98483f8e1364c04fbb591fbc1311e93, type: 3}
 --- !u!65 &1141703936
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19266,6 +19457,64 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!82 &1141703939
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1141703933}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &1141933811
 GameObject:
   m_ObjectHideFlags: 0
