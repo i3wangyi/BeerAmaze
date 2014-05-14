@@ -16,6 +16,7 @@ public class UI : MonoBehaviour {
 	private static float timeCost;
 	private int mainCM;
 	private int fpvCM;
+	public static bool AssistCamera = false;
 
 	public GUISkin customSkin;
 	//public GUIStyle myStyle = null;
@@ -97,9 +98,17 @@ public class UI : MonoBehaviour {
 					FPV  = viewSwitch(FPV);
 					JoyStick.SwitchView();
 				}
-				if(GUILayout.Button("FOG"))
+				if(!FPV)
 				{
-					FogOption.fogoff=!FogOption.fogoff;
+					if(GUILayout.Button("FOG"))
+					{
+						FogOption.fogoff=!FogOption.fogoff;
+					}
+				}
+				if(GUILayout.Button("Assist View"))
+				{
+					GameObject.Find("FPV_Camera").camera.enabled = AssistCamera;
+					AssistCamera = !AssistCamera;
 				}
 				if(GUILayout.Button ("Restart"))
 				{

@@ -35,7 +35,6 @@ public class StartMenuScript : MonoBehaviour
 		if (startMenu)
 		{
 			//For Mobile Debugging
-
 			GUI.skin.GetStyle ("Button").fontSize = 45;	
 			GUI.skin.GetStyle ("TextField").fontSize = 45;	
 			GUI.skin.GetStyle ("box").fontSize = 45;
