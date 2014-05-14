@@ -16,6 +16,7 @@ public class UI : MonoBehaviour {
 	private static float timeCost;
 	private int mainCM;
 	private int fpvCM;
+	public static bool AssistCamera = false;
 
 	public GUISkin customSkin;
 	//public GUIStyle myStyle = null;
@@ -23,6 +24,13 @@ public class UI : MonoBehaviour {
 	private static bool scale = false;
 
 	private int n = 0; 
+	public AudioClip[] audioClip;
+	
+	void PlaySound(int clip)
+	{
+		audio.clip = audioClip [clip];
+		audio.Play ();
+	}
 	// Use this for initialization
 	void Start () {
 		coinCount = 0;
@@ -80,6 +88,7 @@ public class UI : MonoBehaviour {
 				GUILayout.Label("Points:" + coinCount.ToString());
 				if(GUILayout.Button("Setting"))
 				{
+				PlaySound(0);
 				if(n == 0) n = 1;
 				else n = 0;
 				}
@@ -94,15 +103,27 @@ public class UI : MonoBehaviour {
 				GUILayout.BeginVertical("box");
 				if(GUILayout.Button ("View Switch"))
 				{
+					PlaySound(0);
 					FPV  = viewSwitch(FPV);
 					JoyStick.SwitchView();
 				}
-				if(GUILayout.Button("FOG"))
+				if(!FPV)
 				{
-					FogOption.fogoff=!FogOption.fogoff;
+					if(GUILayout.Button("Fog"))
+					{
+						PlaySound(0);
+						FogOption.fogoff=!FogOption.fogoff;
+					}
+				}
+				if(GUILayout.Button("Assist View"))
+				{
+					PlaySound(0);
+					GameObject.Find("FPV_Camera").camera.enabled = AssistCamera;
+					AssistCamera = !AssistCamera;
 				}
 				if(GUILayout.Button ("Restart"))
 				{
+					PlaySound(0);
 					Application.LoadLevel ("Welcome");
 				}
 
@@ -131,10 +152,12 @@ public class UI : MonoBehaviour {
 			GUILayout.Label("Points:" + coinCount.ToString());
 			if (GUILayout.Button ("RESTART!!")) 
 			{
+				PlaySound(0);
 				Application.LoadLevel ("Welcome");
 			}
 			if (GUILayout.Button ("QUIT!!")) 
 			{
+				PlaySound(0);
 				Application.Quit();
 			}
 			GUILayout.EndVertical();

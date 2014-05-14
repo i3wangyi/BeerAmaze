@@ -16,6 +16,11 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
  
     private TrackableBehaviour mTrackableBehaviour;
     
+	public GameObject joyMove;
+	public GameObject joyRotate;
+	public GameObject FPV_camera;
+
+
     #endregion // PRIVATE_MEMBER_VARIABLES
 
 
@@ -88,6 +93,12 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
             component.enabled = true;
         }
 
+		UI.setPlayMode();
+		Radar.isEnableRadar = true;
+		joyMove.SetActive(true);
+		joyRotate.SetActive(true);
+		FPV_camera.camera.enabled = true;
+
         Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
     }
 
@@ -115,6 +126,12 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
         {
             component.enabled = false;
         }
+
+		UI.resetPlayMode();
+		Radar.isEnableRadar = false;
+		joyMove.SetActive(false);
+		joyRotate.SetActive(false);
+		FPV_camera.camera.enabled = false;
 
         Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
     }

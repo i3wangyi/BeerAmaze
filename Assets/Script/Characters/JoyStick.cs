@@ -93,26 +93,26 @@ public class JoyStick : TouchLogic
 					//up
 					Vector3 forward = transform.TransformDirection(player.forward);
 					//				moveDirection = new Vector3(0,0,movespeed);
-					troller.Move(forward * movespeed);
+					troller.Move(forward * movespeed/2);
 				}
 				if(Angle > 45 && Angle <= 135)
 				{
 					//right
 					Vector3 right = transform.TransformDirection(player.right);
 					//				moveDirection = new Vector3(0,0,movespeed);
-					troller.Move(right * movespeed);
+					troller.Move(right * movespeed/2);
 				}
 				if(Angle > 135 || Angle <= -135)
 				{
 					//down
 					Vector3 backward = transform.TransformDirection(player.forward);
-					troller.Move( -backward *  movespeed);
+					troller.Move( -backward *  movespeed/2);
 				}
 				if(Angle > -135  &&  Angle < -45)
 				{
 					//left
 					Vector3 left = transform.TransformDirection(player.right);
-					troller.Move( -left * movespeed);
+					troller.Move( -left * movespeed/2);
 				}
 			}
 			if(ThirdPV)
@@ -144,7 +144,6 @@ public class JoyStick : TouchLogic
 				}
 				if(Mathf.Sqrt(joyDelta.x * joyDelta.x + joyDelta.z * joyDelta.z) >= maxJoyDelta * 0.5 )
 				{
-					Debug.Log (Mathf.Sqrt(joyDelta.x * joyDelta.x + joyDelta.z * joyDelta.z));
 					player.eulerAngles = new Vector3(player.eulerAngles.x, A*(180.0f/Mathf.PI), player.eulerAngles.z);	
 				}
 			}
@@ -154,7 +153,6 @@ public class JoyStick : TouchLogic
 				Angle = Mathf.Atan2(joyDelta.x,joyDelta.z) * Mathf.Rad2Deg;
 				if(Mathf.Sqrt(joyDelta.x * joyDelta.x + joyDelta.z * joyDelta.z) >= maxJoyDelta * 0.7 )
 				{
-					Debug.Log (Mathf.Sqrt(joyDelta.x * joyDelta.x + joyDelta.z * joyDelta.z));
 					player.eulerAngles = new Vector3 (player.eulerAngles.x, Angle, player.eulerAngles.z);
 				}
 			}
