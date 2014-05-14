@@ -76,6 +76,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
 //			t.gameObject.renderer.enabled = true;
 //			t.gameObject.SetActive(true);	
 //		}
+
         // Enable rendering:
         foreach (Renderer component in rendererComponents)
         {

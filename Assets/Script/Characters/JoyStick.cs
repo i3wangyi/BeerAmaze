@@ -21,23 +21,30 @@ public class JoyStick : TouchLogic
 	public CharacterController troller;
 	public GameObject Character;
 
-	private float pitch = 0.0f, yaw = 0.0f;
-	//[NEW]//cache initial rotation of player so pitch and yaw don't reset to 0 before rotating
-	private Vector3 oRotation;
+	private bool startTouch = false;
+	public	float movespeed = 5.0f;
+	private float startOri;
+
+	public static bool FirstPV = false;
+	public static bool ThirdPV = true;
+
 	void Start () 
 	{
 		joyTrans = this.transform;
 		oJoyPos = joyTrans.position;
-		//NEW//cache original rotation of player so pitch and yaw don't reset to 0 before rotating
-		oRotation = player.eulerAngles;
-		pitch = oRotation.x;
-		yaw = oRotation.y;
 	}
-	
+
+	public static void SwitchView()
+	{
+		FirstPV = !FirstPV;
+		ThirdPV = !ThirdPV;
+	}
+
 	void OnTouchBegan()
 	{
 		//Used so the joystick only pays attention to the touch that began on the joystick
 		touch2Watch = TouchLogic.currTouch;
+		startOri = player.eulerAngles.y;
 	}
 	
 	void OnTouchMovedAnywhere()
@@ -71,36 +78,88 @@ public class JoyStick : TouchLogic
 	
 	void ApplyDeltaJoy()
 	{
-		Vector3 moveDirection;
+		Vector3 moveDirection = new Vector3(0,0,0);
 		float Angle;
+		float alpha;
+		float A;
 
 		switch(joystickType)
 		{
 		case JoystickType.Movement:
-			moveDirection  =  new Vector3(joyDelta.x,0, joyDelta.z);
+			if(FirstPV){
+				Angle = Mathf.Atan2(joyDelta.x,joyDelta.z) * 180.0f / Mathf.PI;
+				if(Angle >= -45 && Angle <= 45)
+				{
+					//up
+					Vector3 forward = transform.TransformDirection(player.forward);
+					//				moveDirection = new Vector3(0,0,movespeed);
+					troller.Move(forward * movespeed);
+				}
+				if(Angle > 45 && Angle <= 135)
+				{
+					//right
+					Vector3 right = transform.TransformDirection(player.right);
+					//				moveDirection = new Vector3(0,0,movespeed);
+					troller.Move(right * movespeed);
+				}
+				if(Angle > 135 || Angle <= -135)
+				{
+					//down
+					Vector3 backward = transform.TransformDirection(player.forward);
+					troller.Move( -backward *  movespeed);
+				}
+				if(Angle > -135  &&  Angle < -45)
+				{
+					//left
+					Vector3 left = transform.TransformDirection(player.right);
+					troller.Move( -left * movespeed);
+				}
+			}
+			if(ThirdPV)
+			{
+				moveDirection  =  new Vector3(joyDelta.x,0, joyDelta.z);
+				Angle = Mathf.Atan2(joyDelta.x,joyDelta.z) * Mathf.Rad2Deg;
+				player.eulerAngles = new Vector3(player.eulerAngles.x, Angle, player.eulerAngles.z);
+				moveDirection = transform.TransformDirection(moveDirection * movespeed);
+				//characterTrasform.position = new Vector3(characterTrasform.position.x + joyDelta.x, characterTrasform.position.y,characterTrasform.position.z+joyDelta.z);
+				troller.Move(moveDirection);
+			}
 
-			Angle = Mathf.Atan2(joyDelta.x,joyDelta.z) * Mathf.Rad2Deg;
-
-			float deltaY = Angle - 270 - player.eulerAngles.y;
-			player.eulerAngles = new Vector3(player.eulerAngles.x, Angle, player.eulerAngles.z);
-
-			Transform characterPos = troller.transform;
-			Vector3 originDirectin = transform.TransformDirection(new Vector3(characterPos.position.x, 0, characterPos.position.z));
-			moveDirection = transform.TransformDirection(moveDirection);
-//			characterTrasform.position = new Vector3(characterTrasform.position.x + joyDelta.x, characterTrasform.position.y,characterTrasform.position.z+joyDelta.z);
-			troller.Move(moveDirection*5);
 			Character.gameObject.animation.Play("walk", PlayMode.StopAll);
+			
 			break;
 		case JoystickType.LookRotation:
-//			pitch -= Input.GetTouch(touch2Watch).deltaPosition.y * rotateSpeed * Time.deltaTime;
-//
-//			yaw += Input.GetTouch(touch2Watch).deltaPosition.x * rotateSpeed * Time.deltaTime;
-//			//limit so we dont do backflips
-//			pitch = Mathf.Clamp(pitch, -80, 80);
-			//do the rotations of our camera 
-			moveDirection  =  new Vector3(joyDelta.x,0, joyDelta.z);
-			Angle = Mathf.Atan2(joyDelta.x,joyDelta.z) * Mathf.Rad2Deg;
-			player.eulerAngles = new Vector3 (player.eulerAngles.x, Angle, player.eulerAngles.z);
+			moveDirection = new Vector3(joyDelta.x, 0, joyDelta.z);
+
+			if(FirstPV){
+				alpha = startOri/(180.0f/Mathf.PI) ;
+				Angle = Mathf.Atan2(joyDelta.x,joyDelta.z);
+				
+				A = Angle + alpha;
+				if(A < 0)
+				{
+					A += Mathf.PI * 2;
+				}
+				else if(A > 2 * Mathf.PI){
+					A -= Mathf.PI * 2;
+				}
+				if(Mathf.Sqrt(joyDelta.x * joyDelta.x + joyDelta.z * joyDelta.z) >= maxJoyDelta * 0.5 )
+				{
+					Debug.Log (Mathf.Sqrt(joyDelta.x * joyDelta.x + joyDelta.z * joyDelta.z));
+					player.eulerAngles = new Vector3(player.eulerAngles.x, A*(180.0f/Mathf.PI), player.eulerAngles.z);	
+				}
+			}
+
+			if(ThirdPV){
+				moveDirection  =  new Vector3(joyDelta.x,0, joyDelta.z);
+				Angle = Mathf.Atan2(joyDelta.x,joyDelta.z) * Mathf.Rad2Deg;
+				if(Mathf.Sqrt(joyDelta.x * joyDelta.x + joyDelta.z * joyDelta.z) >= maxJoyDelta * 0.7 )
+				{
+					Debug.Log (Mathf.Sqrt(joyDelta.x * joyDelta.x + joyDelta.z * joyDelta.z));
+					player.eulerAngles = new Vector3 (player.eulerAngles.x, Angle, player.eulerAngles.z);
+				}
+			}
+
 			break;
 		}
 	}
@@ -114,7 +173,8 @@ public class JoyStick : TouchLogic
 		Vector3 position = new Vector3 (Mathf.Clamp(x, oJoyPos.x - maxJoyDelta, oJoyPos.x + maxJoyDelta),
 		                                Mathf.Clamp(y, oJoyPos.y - maxJoyDelta, oJoyPos.y + maxJoyDelta), 0);//use Vector2.ClampMagnitude instead if you want a circular clamp instead of a square
 		//joyDelta used for moving the player
-		joyDelta = new Vector3(position.x - oJoyPos.x, 0, position.y - oJoyPos.y).normalized;
+//		joyDelta = new Vector3(position.x - oJoyPos.x, 0, position.y - oJoyPos.y).normalized;
+		joyDelta = new Vector3(position.x - oJoyPos.x, 0, position.y - oJoyPos.y);
 		//position used for moving the joystick
 		return position;
 	}
