@@ -25,10 +25,14 @@ public class InfoShow : MonoBehaviour {
 			GUILayout.BeginArea(new Rect (Screen.width -550, Screen.height - 250, 550, 250));
 			GUILayout.BeginHorizontal("box");
 			if (GUILayout.Button (preTex)) {
+				GameObject.Find("MENU").GetComponent<StartMenuScript>().PlaySound(0);
 				if(count > 0)
 					count--;
+				else
+					Application.LoadLevel("Welcome");
 			}
 			if (GUILayout.Button (nextTex)) {
+				GameObject.Find("MENU").GetComponent<StartMenuScript>().PlaySound(0);
 				count++;
 				if(count > 2)
 				{
