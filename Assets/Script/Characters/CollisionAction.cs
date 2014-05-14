@@ -8,7 +8,13 @@ public class CollisionAction : MonoBehaviour {
 	private Vector3 originOri;
 	private bool IMBA = false;
 
+	public AudioClip[] audioClip;
 
+	void PlaySound(int clip)
+	{
+		audio.clip = audioClip [clip];
+		audio.Play ();
+		}
 
 	// Use this for initialization
 	void Start () {
@@ -37,21 +43,26 @@ public class CollisionAction : MonoBehaviour {
 		{
 			hit.transform.GetComponent<ToolBehavior>().delete();
 			UI.coinAdd(1);
+			PlaySound(0);
 		}
 		if(hit.transform.tag == "coin5") {
 			hit.transform.GetComponent<ToolBehavior>().delete();
-			UI.coinAdd(5);	
+			UI.coinAdd(5);
+			PlaySound(0);
 		}
 		if(hit.transform.tag == "coin10") {
 			hit.transform.GetComponent<ToolBehavior>().delete();
 			UI.coinAdd(10);	
+			PlaySound(0);
 		}	
 		if(hit.transform.tag == "coin20") {
 			hit.transform.GetComponent<ToolBehavior>().delete();
 			UI.coinAdd(20);	
+			PlaySound(0);
 		}	
 		if(hit.transform.tag == "Mushroom")
 		{
+			PlaySound(1);
 			//Scale up the characte
 			hit.transform.GetComponent<ToolBehavior>().delete();
 			this.transform.localScale = this.transform.localScale * (1.0f + 0.3f);
@@ -60,6 +71,7 @@ public class CollisionAction : MonoBehaviour {
 		}
 		if(hit.transform.tag == "Beer")
 		{
+			PlaySound(2);
 			GameObject.Find ("MainCamera").GetComponent<UI>().EndOfGame = true;
 		}
 		/*else if(hit.transform.tag == "Monster")
@@ -80,6 +92,7 @@ public class CollisionAction : MonoBehaviour {
 	
 	public void resetScale()
 	{
+		PlaySound(3);
 		this.transform.localScale = originScale;
 		IMBA = false;
 	}

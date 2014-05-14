@@ -8,16 +8,26 @@ public class StartMenuScript : MonoBehaviour
 	public  bool AboutUsSelected = false;
 	public Texture backgroundTexture;
 	public GUISkin customSkin;
+
+	public AudioClip[] audioClip;
+	
+	void PlaySound(int clip)
+	{
+		audio.clip = audioClip [clip];
+		audio.Play ();
+	}
+
 	// Use this for initialization
 	void Start () 
 	{
 //		this.enabled = false;
+		PlaySound(0);
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-	
+
 	}
 
 	void OnGUI() {
@@ -30,22 +40,33 @@ public class StartMenuScript : MonoBehaviour
 			GUI.skin.GetStyle ("TextField").fontSize = 45;	
 			GUI.skin.GetStyle ("box").fontSize = 45;
 			GUI.DrawTexture (new Rect (0, 0, Screen.width, Screen.height), backgroundTexture);
-			GUILayout.BeginArea (new Rect (Screen.width / 2 - 300, Screen.height / 2 + 250, 600, 600));
-			GUILayout.BeginVertical ("box");
-
-			if (!AboutUsSelected && !HelpSelected) {
+			if(!AboutUsSelected)
+			{
+				GUILayout.BeginArea (new Rect (Screen.width / 2 - 300, Screen.height / 2 , 600, 600));
+				GUILayout.BeginVertical ("box");
+			}
+			else
+			{
+				GUILayout.BeginArea (new Rect (Screen.width / 2 - 300, Screen.height / 2 -200, 600, 600));
+				GUILayout.BeginVertical ("box");
+			}
+			if (!AboutUsSelected && !HelpSelected) 
+			{
 
 					//Start
 					if (GUILayout.Button ("Start!")) {
-							Application.LoadLevel ("MazeSelection");
+					PlaySound(0);
+					Application.LoadLevel ("MazeSelection");
 					}
 					//Help
 					if (GUILayout.Button ("Help")) {
-							HelpSelected = true;
+					PlaySound(0);		
+					HelpSelected = true;
 					}
 					//Help
 					if (GUILayout.Button ("About Us")) {
-						AboutUsSelected = true;
+					PlaySound(0);	
+					AboutUsSelected = true;
 					}
 
 			}
@@ -57,7 +78,13 @@ public class StartMenuScript : MonoBehaviour
 			}
 			if(AboutUsSelected)
 			{
-				GUILayout.TextField ("Welcome to OurMazeGame!! Our members are Wen-Ping Chi, Yi Wang, Shuai Lu, Margaret Elizabeth Kinetz!");
+				GUI.skin.GetStyle ("Label").fontSize = 45;	
+				GUILayout.Label ("Welcome to OurMazeGame!!");
+				GUILayout.Label ("Our members are : "); 
+				GUILayout.Label ("Wen-Ping Chi,"); 
+				GUILayout.Label ("Yi Wang,"); 
+				GUILayout.Label ("Shuai Lu,");
+				GUILayout.Label ("Margaret Elizabeth Kinetz!"); 
 				if (GUILayout.Button ("Close")) {
 					AboutUsSelected = false;
 				}
