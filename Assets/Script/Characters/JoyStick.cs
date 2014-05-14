@@ -124,7 +124,6 @@ public class JoyStick : TouchLogic
 				//characterTrasform.position = new Vector3(characterTrasform.position.x + joyDelta.x, characterTrasform.position.y,characterTrasform.position.z+joyDelta.z);
 				troller.Move(moveDirection);
 			}
-
 			Character.gameObject.animation.Play("walk", PlayMode.StopAll);
 			
 			break;

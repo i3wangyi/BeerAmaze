@@ -10,7 +10,7 @@ public class CollisionAction : MonoBehaviour {
 
 	public AudioClip[] audioClip;
 
-	void PlaySound(int clip)
+	public void PlaySound(int clip)
 	{
 		audio.clip = audioClip [clip];
 		audio.Play ();

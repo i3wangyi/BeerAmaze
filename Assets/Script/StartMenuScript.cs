@@ -11,7 +11,7 @@ public class StartMenuScript : MonoBehaviour
 
 	public AudioClip[] audioClip;
 	
-	void PlaySound(int clip)
+	public void PlaySound(int clip)
 	{
 		audio.clip = audioClip [clip];
 		audio.Play ();
@@ -21,7 +21,7 @@ public class StartMenuScript : MonoBehaviour
 	void Start () 
 	{
 //		this.enabled = false;
-		PlaySound(0);
+		//PlaySound(0);
 	}
 	
 	// Update is called once per frame
