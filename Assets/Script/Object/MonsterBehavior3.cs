@@ -21,7 +21,7 @@ public class MonsterBehavior3 : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if(!isDeath){
+		if(!isDeath && UI.isPlayMode){
 			if (direction.Equals("right")) 
 			{
 				this.gameObject.transform.localPosition = this.gameObject.transform.localPosition + new Vector3(0f, 0f, 0.001f);

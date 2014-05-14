@@ -18,7 +18,7 @@ public class Radar : MonoBehaviour
 	void OnGUI()
 	{
 		// background displaying top left in square of 128 pixels
-		Rect radarBackgroundRect = new Rect(Screen.width - RADAR_SIZE, 0, RADAR_SIZE, RADAR_SIZE);
+		Rect radarBackgroundRect = new Rect(Screen.width/2 - RADAR_SIZE/2, 0, RADAR_SIZE, RADAR_SIZE);
 		GUI.DrawTexture(radarBackgroundRect,radarBackground);
 		// find all 'cube' tagged objects
 
@@ -117,7 +117,7 @@ public class Radar : MonoBehaviour
 		blipY += RADAR_SIZE/2;
 		
 		// draw target texture at calculated location
-		Rect blipRect = new Rect(Screen.width  - RADAR_SIZE + blipY - 10 , RADAR_SIZE - blipX + 15 , 10, 10);
+		Rect blipRect = new Rect(Screen.width/2  - RADAR_SIZE/2 + blipY - 5 , RADAR_SIZE - blipX - 13, 10, 10);
 
 		GUI.DrawTexture(blipRect, targetBlip);		
 
