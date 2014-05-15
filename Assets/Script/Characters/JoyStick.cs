@@ -32,6 +32,8 @@ public class JoyStick : TouchLogic
 	{
 		joyTrans = this.transform;
 		oJoyPos = joyTrans.position;
+		FirstPV = false;
+		ThirdPV = true;
 	}
 
 	public static void SwitchView()
