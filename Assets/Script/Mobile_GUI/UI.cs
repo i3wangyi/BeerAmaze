@@ -10,7 +10,8 @@ public class UI : MonoBehaviour {
 	public GameObject player;
 	public Camera ARCamera;
 	public Camera FPVCamera;
-
+	public int endTime;
+	public bool setEndTime;
 
 	private static int coinCount;
 	private static float timeCost;
@@ -40,6 +41,8 @@ public class UI : MonoBehaviour {
 		fpvCM = FPVCamera.cullingMask;
 		FPV = false;
 		mainCM = ARCamera.cullingMask;
+		endTime = 0;
+		setEndTime = false;
 	}
 
 	public static void coinAdd(int value)
@@ -158,11 +161,16 @@ public class UI : MonoBehaviour {
 		
 		if (EndOfGame) 
 		{
+			if(!setEndTime)
+			{
+				setEndTime = !setEndTime;
+				endTime = Mathf.CeilToInt(timeCost);
+			}
+
 			GUILayout.BeginArea(new Rect(650,300,600,1000) );
-			
 			GUILayout.BeginVertical("box");
 			GUILayout.Label("Congratulation!! You Win!!");
-			GUILayout.Label("Timer:" + Mathf.CeilToInt(timeCost).ToString());
+			GUILayout.Label("Timer:" + endTime.ToString());
 			GUILayout.Label("Points:" + coinCount.ToString());
 			if (GUILayout.Button ("RESTART!!")) 
 			{
