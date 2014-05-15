@@ -22,36 +22,39 @@ BeerMaze
 ##Project directory
 
 script/
+.
 ├── Camera
-│   ├── CameraFrame.cs
-│   ├── CameraSmoothFollow.cs
-│   ├── Radar.cs
+│   ├── CameraFrame.cs  //Control the frame of assist view
+│   ├── CameraSmoothFollow.cs 
+│   ├── Radar.cs 		// Control the behavior of radar
+├── Camera.meta
 ├── Characters
-│   ├── CollisionAction.cs
-│   ├── JoyStick.cs
+│   ├── CollisionAction.cs	//control the behavior of collision
+│   ├── JoyStick.cs			// control the joystick behavior
 │   ├── ObjectBehavior.cs
 │   ├── ReturnPosition.cs
 │   ├── TouchLogic.cs
 │   ├── TouchManager.cs
-├── Characters.meta
+├── FogOption.cs
 ├── InfoShow.cs
 ├── MazeSelection.cs
 ├── Mobile_GUI
 │   ├── UI.cs
-├── Mobile_GUI.meta
+├── MyTracker.cs  //control the behavior of maze selection scene
 ├── Object
-│   ├── MonsterBehavior1.cs
+│   ├── MonsterBehavior1.cs  // for monster behavior
 │   ├── MonsterBehavior2.cs
 │   ├── MonsterBehavior3.cs
 │   ├── MonstrerBehavior.cs
-│   ├── ToolBehavior.cs
-├── StartMenuScript.cs
+│   ├── ToolBehavior.cs	    // for monster and other coin deletion behavior
+├── StartMenuScript.cs      // welcome scene 
 
 ##Location of Video
-[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/fsbnJo9RVcw/0.jpg)](https://www.youtube.com/watch?v=fsbnJo9RVcw)
+[![video](http://img.youtube.com/vi/rC1FpLb5WYU/0.jpg)](https://www.youtube.com/watch?v=rC1FpLb5WYU)
 
 ## How to run
-	Open any of *.unity under Assets folder.
+	1. Follow the instruction.txt.
+	2. Open any of *.unity under Assets folder.
 			1. Deploy to Android/iOS(properly configured)
 			2. Directly run it from within Unity 3D IDE
 	
@@ -60,7 +63,7 @@ script/
 
 
 ## Bug
-Move direction is based on third person view, when switching to first person view, movement are not switched to first person view.
+	None
 
 
 ## Asset sources
