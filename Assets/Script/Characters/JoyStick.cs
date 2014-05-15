@@ -22,17 +22,17 @@ public class JoyStick : TouchLogic
 	public GameObject Character;
 
 	private bool startTouch = false;
-	public	float movespeed = 5.0f;
+	public	float movespeed = 10.0f;
 	private float startOri;
 
-	public static bool FirstPV = false;
-	public static bool ThirdPV = true;
+	public static bool FirstPV ;
+	public static bool ThirdPV ;
 
 	void Start () 
 	{
 		joyTrans = this.transform;
 		oJoyPos = joyTrans.position;
-		FirstPV = false;
+		FirstPV = false;	
 		ThirdPV = true;
 	}
 
