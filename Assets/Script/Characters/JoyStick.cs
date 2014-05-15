@@ -25,13 +25,15 @@ public class JoyStick : TouchLogic
 	public	float movespeed = 5.0f;
 	private float startOri;
 
-	public static bool FirstPV = false;
-	public static bool ThirdPV = true;
+	public static bool FirstPV ;
+	public static bool ThirdPV ;
 
 	void Start () 
 	{
 		joyTrans = this.transform;
 		oJoyPos = joyTrans.position;
+		FirstPV = false;	
+		ThirdPV = true;
 	}
 
 	public static void SwitchView()
