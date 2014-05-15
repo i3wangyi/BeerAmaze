@@ -23,6 +23,7 @@ public class UI : MonoBehaviour {
 	private static float duration = 0;
 	private static bool scale = false;
 	private  bool FPV = false;
+	private  bool isAssistView = true;
 	private int n = 0; 
 	public AudioClip[] audioClip;
 	
@@ -105,8 +106,11 @@ public class UI : MonoBehaviour {
 				if(GUILayout.Button ("View Switch"))
 				{
 					PlaySound(0);
-					FPV = viewSwitch(FPV);
-					Debug.Log ("FPV:" + FPV);
+					viewSwitch(FPV);
+
+					FPV = !FPV;
+					isAssistView = true;
+
 					JoyStick.SwitchView();
 				}
 				if(!FPV)
@@ -129,7 +133,7 @@ public class UI : MonoBehaviour {
 						GameObject.Find("FPV_Camera").camera.enabled = !GameObject.Find("FPV_Camera").camera.enabled;
 						GameObject.Find("MainCamera").camera.enabled = true; 
 					}
-					CameraFrame.visible = !CameraFrame.visible;	
+					CameraFrame.visible = !CameraFrame.visible;
 				}
 				if(GUILayout.Button ("Restart"))
 				{
@@ -209,7 +213,7 @@ public class UI : MonoBehaviour {
 		scale = true;
 	}
 	
-	public bool viewSwitch(bool v)
+	public void viewSwitch(bool v)
 	{
 		Debug.Log ("v:" + v);
 		//consider camera depth
@@ -223,6 +227,10 @@ public class UI : MonoBehaviour {
 
 			ARCamera.rect = new Rect(0.68f,0.62f,0.32f,0.37f);
 			FPVCamera.rect = new Rect(0,0,1,1);
+
+			GameObject.Find("MainCamera").camera.enabled = true;
+			GameObject.Find("FPV_Camera").camera.enabled = true;	
+			CameraFrame.visible = true;
 		}
 		else{
 			ARCamera.depth = 1;
@@ -233,8 +241,11 @@ public class UI : MonoBehaviour {
 			ARCamera.rect = new Rect(0,0,1,1);
 			FPVCamera.rect = new Rect(0.68f,0.62f,0.32f,0.37f);
 
+			GameObject.Find("MainCamera").camera.enabled = true;
+			GameObject.Find("FPV_Camera").camera.enabled = true;	
+			CameraFrame.visible = true;
+
 		}
-		return !v;
 	}
 
 
